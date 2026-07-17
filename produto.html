@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes da Peça — Essência da Serra</title>
+  <meta name="description" content="Conheça os detalhes desta peça artesanal inspirada na Serra da Capivara.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="produto.css">
+</head>
+<body>
+
+
+
+<!-- ===== NAVBAR ===== -->
+<nav class="nav scrolled" id="nav" data-od-id="navbar">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand" aria-label="Essência da Serra — início"><img src="img/LOGO---ESSENCIA-DE-SERRA.png" alt="Essência da Serra" /></a>
+    <div class="nav-links">
+      <a href="index.html#colecoes">Coleções</a>
+      <a href="index.html#categorias">Vestuário</a>
+      <a href="index.html#categorias">Bolsas</a>
+      <a href="index.html#categorias">Acessórios</a>
+      <a href="index.html#territorio">Sobre</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Drawer mobile -->
+<div class="drawer" id="drawer">
+  <a href="index.html#colecoes" data-close>Coleções</a>
+  <a href="index.html#categorias" data-close>Vestuário</a>
+  <a href="index.html#categorias" data-close>Acessórios</a>
+  <a href="index.html#territorio" data-close>Sobre</a>
+</div>
+
+<!-- Conteúdo da Página de Detalhe -->
+<main class="product-page-wrap">
+  <!-- Botão Voltar -->
+  <a href="index.html#categorias" class="back-btn zoom-area">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    Voltar ao Acervo
+  </a>
+
+  <!-- Layout de Detalhe -->
+  <div class="p-grid">
+    <!-- Coluna Galeria -->
+    <div class="p-gallery">
+      <div class="p-main-img-wrap">
+        <button class="p-nav prev" id="pPrev" aria-label="Foto anterior">&#10216;</button>
+        <img class="p-main-img" id="pMainImg" src="" alt="" />
+        <button class="p-nav next" id="pNext" aria-label="Próxima foto">&#10217;</button>
+      </div>
+      <div class="p-thumbs" id="pThumbs"></div>
+    </div>
+    <!-- Coluna Info -->
+    <div class="p-info">
+      <span class="p-coll-tag" id="pCollTag"></span>
+      <h1 class="p-title" id="pTitle"></h1>
+      <div class="p-price-block">
+        <span class="p-price" id="pPrice"></span>
+        <span class="p-price-details" id="pPriceDetails"></span>
+        <div class="p-payment-info">
+          <span>Pix (-10%)</span>
+          <span>Cartão de Crédito</span>
+          <span>Boleto</span>
+        </div>
+      </div>
+
+      <p class="p-desc" id="pDesc"></p>
+      <div class="p-meta">
+        <span>✓ Confecção 100% manual e local</span>
+        <span>✓ Envio rastreado para todo o Brasil</span>
+        <span>✓ Encomenda segura via WhatsApp</span>
+      </div>
+      <a class="p-wa-btn zoom-area" id="pWaBtn" href="" target="_blank" rel="noopener noreferrer">
+        <svg class="p-wa-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.5.86 3.2 1.32 4.95 1.32 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm.05 16.91c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.1 8.1 0 0 1-1.24-4.2c0-4.47 3.64-8.11 8.11-8.11 4.47 0 8.11 3.64 8.11 8.11 0 4.48-3.64 8.12-8.11 8.12z"/></svg>
+        Encomendar
+      </a>
+    </div>
+  </div>
+
+  <!-- Explore Outras Peças -->
+  <section style="border-top: 1px solid rgba(46,32,21,.1); padding-top: 90px;">
+    <h2 class="more-title">Explore Outras Peças</h2>
+    <div class="cat-grid" id="moreGrid"></div>
+  </section>
+</main>
+
+<!-- ===== RODAPÉ ===== -->
+<footer class="footer" id="rodape" data-od-id="rodape">
+  <div class="wrap">
+    <div class="footer-grid">
+      <!-- Coluna Brand -->
+      <div class="foot-col brand">
+        <img class="foot-logo" src="img/LOGO---ESSENCIA-DE-SERRA.png" alt="Essência da Serra" />
+        <p class="brand-desc">Moda autoral inspirada na Serra da Capivara. Criamos peças que carregam a história, a arte rupestre e a identidade do sertão do Piauí.</p>
+        <div class="foot-socials">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://wa.me/5586999999999" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+      <!-- Coluna Quick Links -->
+      <div class="foot-col links">
+        <h4>Navegação</h4>
+        <div class="foot-nav-links">
+          <a href="index.html#colecoes">Coleções</a>
+          <a href="index.html#categorias">O Acervo</a>
+          <a href="index.html#territorio">Nossa História</a>
+          <a href="#">Atacado & Parcerias</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Essência da Serra. Todos os direitos reservados.</p>
+      <p>Feito à mão no Piauí, Brasil.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---- Banco de Dados de Produtos ---- */
+  var productsDb = {
+    "cat-crochet": {
+      name: "Vestido Frente Única Crochê",
+      collection: "Coleção 01 · Serra",
+      price: "R$ 490",
+      desc: "Confeccionado artesanalmente por costureiras da região em fio de algodão natural de alta qualidade. Apresenta pontos vazados geométricos inspirados nas representações de arte rupestre e na textura da palha de carnaúba.",
+      images: ["img/product_vestido_1.png", "img/product_vestido_1.png", "img/product_vestido_1.png"],
+      waText: "Olá! Gostei muito do Vestido Frente Única Crochê da Coleção Serra e gostaria de saber como encomendar."
+    },
+    "cat-camisas": {
+      name: "Camisa Caatinga Pintada à Mão",
+      collection: "Coleção 02 · Rupestre",
+      price: "R$ 320",
+      desc: "Camisa clássica de modelagem confortável tecida em linho com algodão. Cada peça é pintada individualmente à mão livre com pigmentos minerais de alta durabilidade, reproduzindo símbolos animais sagrados da Serra da Capivara.",
+      images: ["img/product_camisa_1.png", "img/product_camisa_1.png", "img/product_camisa_1.png"],
+      waText: "Olá! Gostei muito da Camisa Caatinga Pintada à Mão da Coleção Rupestre e gostaria de encomendar."
+    },
+    "cat-bolsas": {
+      name: "Bolsa Alça de Madeira Macramê",
+      collection: "Coleção 03 · Raízes",
+      price: "R$ 280",
+      desc: "Bolsa de ombro estruturada e tecida com nós firmes de macramê em cordão de algodão cru. Possui fita protetora interna para pertences pequenos e alças anatômicas exclusivas em madeira de reflorestamento lixada e tratada.",
+      images: ["img/product_bolsa_1.png", "img/product_bolsa_1.png", "img/product_bolsa_1.png"],
+      waText: "Olá! Gostei muito da Bolsa Alça de Madeira Macramê da Coleção Raízes e gostaria de encomendar."
+    },
+    "cat-bordado": {
+      name: "Xale Bordado Ancestralidade",
+      collection: "Coleção 02 · Rupestre",
+      price: "R$ 410",
+      desc: "Xale longo e aconchegante em tecido de algodão rústico cru. Acabamento desfiado feito à mão e bordados manuais na cor terra batida, retratando o ecossistema e os paredões do Parque Nacional.",
+      images: ["img/product_camisa_1.png", "img/product_vestido_1.png", "img/product_bolsa_1.png"],
+      waText: "Olá! Gostei muito do Xale Bordado Ancestralidade da Coleção Rupestre e gostaria de encomendar."
+    },
+    "cat-biojoias": {
+      name: "Colar Sementes da Capivara",
+      collection: "Coleção 04 · Sol da Caatinga",
+      price: "R$ 120",
+      desc: "Colar artesanal de design exclusivo confeccionado com sementes nativas tratadas, cascas de babaçu e fecho regulável em fio encerado. Um acessório que carrega a biodiversidade e sabedoria local.",
+      images: ["img/product_bolsa_1.png", "img/product_camisa_1.png", "img/product_vestido_1.png"],
+      waText: "Olá! Gostei muito do Colar Sementes da Capivara da Coleção Sol da Caatinga e gostaria de encomendar."
+    },
+    "cat-cintos": {
+      name: "Cinto Trançado Terra Batida",
+      collection: "Coleção 03 · Raízes",
+      price: "R$ 95",
+      desc: "Cinto trançado à mão em cordas de algodão tingidas com argilas minerais. Fivela de madeira rústica torneada que completa produções de vestidos e saias com personalidade e conforto.",
+      images: ["img/product_bolsa_1.png", "img/product_camisa_1.png", "img/product_vestido_1.png"],
+      waText: "Olá! Gostei muito do Cinto Trançado Terra Batida da Coleção Raízes e gostaria de encomendar."
+    },
+    "cat-chapeus": {
+      name: "Chapéu Pedaço do Sol",
+      collection: "Coleção 04 · Sol da Caatinga",
+      price: "R$ 160",
+      desc: "Chapéu estruturado e trançado manualmente em palha de carnaúba por artesãs locais. Faixa decorativa bordada com pigmentos naturais e detalhe de contas de madeira.",
+      images: ["img/product_camisa_1.png", "img/product_vestido_1.png", "img/product_bolsa_1.png"],
+      waText: "Olá! Gostei muito do Chapéu Pedaço do Sol da Coleção Sol da Caatinga e gostaria de encomendar."
+    },
+    "cat-carteiras": {
+      name: "Clutch Argila Vermelha",
+      collection: "Coleção 01 · Serra",
+      price: "R$ 210",
+      desc: "Clutch em crochê estruturado de formato retangular. Alça de punho removível em couro legítimo e fecho magnético embutido com detalhe rústico de semente polida.",
+      images: ["img/product_bolsa_1.png", "img/product_camisa_1.png", "img/product_vestido_1.png"],
+      waText: "Olá! Gostei muito da Clutch Argila Vermelha da Coleção Serra e gostaria de encomendar."
+    }
+  };
+
+  /* ---- Inicialização por parâmetro URL ---- */
+  var params = new URLSearchParams(window.location.search);
+  var activeId = params.get('id') || 'cat-crochet';
+  var prod = productsDb[activeId] || productsDb['cat-crochet'];
+
+  var currentImages = prod.images;
+  var currentImgIdx = 0;
+
+  var pMainImg = document.getElementById('pMainImg');
+  var pThumbs = document.getElementById('pThumbs');
+  var pTitle = document.getElementById('pTitle');
+  var pCollTag = document.getElementById('pCollTag');
+  var pPrice = document.getElementById('pPrice');
+  var pDesc = document.getElementById('pDesc');
+  var pWaBtn = document.getElementById('pWaBtn');
+  var pPrev = document.getElementById('pPrev');
+  var pNext = document.getElementById('pNext');
+
+  // Preenche dados principais
+  pTitle.textContent = prod.name;
+  pCollTag.textContent = prod.collection;
+  pPrice.textContent = prod.price;
+  pDesc.textContent = prod.desc;
+  document.title = prod.name + " — Essência da Serra";
+
+  // Cálculos dinâmicos de parcelamento e desconto Pix
+  var cleanPrice = parseFloat(prod.price.replace(/[^\d]/g, ''));
+  if(!isNaN(cleanPrice)) {
+    var pixVal = Math.floor(cleanPrice * 0.9);
+    var installmentVal = (cleanPrice / 3).toFixed(2).replace('.', ',');
+    document.getElementById('pPriceDetails').innerHTML = "ou <strong>R$ " + pixVal + " no Pix</strong> (10% de desconto) / ou em até 3x de R$ " + installmentVal + " sem juros no cartão";
+  }
+
+  var phoneNumber = "5586999999999";
+  pWaBtn.href = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(prod.waText);
+
+  function updateGallery() {
+    pMainImg.src = currentImages[currentImgIdx];
+    pMainImg.alt = prod.name;
+    
+    pThumbs.innerHTML = "";
+    currentImages.forEach(function(img, idx) {
+      var thumb = document.createElement('div');
+      thumb.className = "p-thumb" + (idx === currentImgIdx ? " active" : "");
+      thumb.style.backgroundImage = "url(" + img + ")";
+      thumb.addEventListener('click', function() {
+        currentImgIdx = idx;
+        updateGallery();
+      });
+      pThumbs.appendChild(thumb);
+    });
+  }
+
+  updateGallery();
+
+  if(pPrev) pPrev.addEventListener('click', function() {
+    currentImgIdx = (currentImgIdx - 1 + currentImages.length) % currentImages.length;
+    updateGallery();
+  });
+  if(pNext) pNext.addEventListener('click', function() {
+    currentImgIdx = (currentImgIdx + 1) % currentImages.length;
+    updateGallery();
+  });
+
+  /* ---- Renderiza a Seção "Explore Outras Peças" ---- */
+  var moreGrid = document.getElementById('moreGrid');
+  if(moreGrid){
+    var count = 0;
+    for(var key in productsDb){
+      if(key === activeId) continue; // Exclui a peça atual
+      if(count >= 4) break; // Mostra no máximo 4
+      
+      var p = productsDb[key];
+      var card = document.createElement('a');
+      card.className = "cat-card zoom-area";
+      card.href = "produto.html?id=" + key;
+      
+      // Imagem de fundo estilizada (usa a primeira foto do banco ou cinza se for placeholder)
+      var bgImg = p.images[0];
+      var styleStr = "background-image: url('" + bgImg + "'); background-size: cover; background-position: center;";
+      
+      card.innerHTML = 
+        '<div class="cat-thumb">' +
+          '<div class="ph" style="' + styleStr + '"></div>' +
+          '<span class="cat-btn">Ver detalhes</span>' +
+        '</div>' +
+        '<div class="cat-meta">' +
+          '<h3>' + p.name + '</h3>' +
+          '<p class="price">' + p.price + '</p>' +
+        '</div>';
+      
+      moreGrid.appendChild(card);
+      count++;
+    }
+  }
+
+  /* ---- Cursor Customizado removido ---- */
+
+  /* ---- Menu mobile drawer ---- */
+  var toggle = document.getElementById('navToggle');
+  var drawer = document.getElementById('drawer');
+  function closeMenu(){ document.body.classList.remove('menu-open'); if(toggle) toggle.setAttribute('aria-expanded','false'); }
+  if(toggle && drawer){
+    toggle.addEventListener('click', function(){
+      var open = document.body.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    drawer.querySelectorAll('[data-close]').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  }
+
+  /* ---- Newsletter ---- */
+  var nf = document.getElementById('newsForm');
+  if(nf){ nf.addEventListener('submit', function(ev){ ev.preventDefault(); var em=document.getElementById('email').value; document.getElementById('newsMsg').textContent = em? 'Obrigada! Você entrou para a nossa lista.' : ''; nf.reset(); }); }
+})();
+</script>
+</body>
+</html>

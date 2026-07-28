@@ -6,7 +6,7 @@
 <title>Essência da Serra — Moda artesanal da Serra da Capivara</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -82,13 +82,17 @@
 <!-- ===== NAVBAR ===== -->
 <nav class="nav" id="nav" data-od-id="navbar">
   <div class="wrap">
-
+    <a href="#topo" class="nav-brand" aria-label="Essência da Serra — início"><img src="img/LOGO---ESSENCIA-DE-SERRA.png" alt="Essência da Serra" /></a>
     <div class="nav-links" data-od-id="nav-links">
       <a href="#colecoes">Coleções</a>
       <a href="#categorias">Vestuário</a>
       <a href="#categorias">Bolsas</a>
       <a href="#categorias">Acessórios</a>
       <a href="#territorio">Sobre</a>
+      <button class="nav-search-btn" id="openSearchBtn" aria-label="Buscar no acervo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Buscar</span>
+      </button>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -96,6 +100,7 @@
 
 <!-- Drawer mobile -->
 <div class="drawer" id="drawer">
+  <button class="drawer-search-btn" id="drawerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Buscar no acervo</button>
   <a href="#colecoes" data-close>Coleções</a>
   <a href="#categorias" data-close>Vestuário</a>
   <a href="#categorias" data-close>Acessórios</a>
@@ -105,15 +110,188 @@
 <!-- ===== HERO ===== -->
 <header class="hero" id="topo" data-od-id="hero">
   <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-ridge" id="heroRidge"></div>
+
+  <!-- Bando de Pássaros em Voo pela Serra -->
+  <div class="hero-birds" aria-hidden="true">
+    <svg class="birds-flock-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <path id="asaGeo" d="M100,84 C86,70 70,62 54,64 C44,66 34,74 26,86 C34,78 44,74 54,75 C70,77 86,86 100,98 Z"/>
+        <path id="corpoGeo" d="M86,88 C92,84 102,83 110,86 C114,87 117,89 119,90 L111,93 C103,97 92,97 87,93 C84,91 84,90 86,88 Z"/>
+      </defs>
+
+      <!-- Pássaro 1: grande, primeiro plano -->
+      <g transform="translate(30 180) scale(1) rotate(-14 100 90)" fill="rgba(245,237,224,0.85)">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 3;0 -3;0 3" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.85s" begin="0s" repeatCount="indefinite"/>
+          <use href="#asaGeo" xlink:href="#asaGeo">
+            <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.85s" begin="0s" repeatCount="indefinite"/>
+          </use>
+          <g transform="translate(200 0) scale(-1 1)">
+            <g transform="translate(100 90) scale(0.82) translate(-100 -90)">
+              <use href="#asaGeo" xlink:href="#asaGeo">
+                <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.85s" begin="0s" repeatCount="indefinite"/>
+              </use>
+            </g>
+          </g>
+          <use href="#corpoGeo" xlink:href="#corpoGeo"/>
+        </g>
+      </g>
+
+      <!-- Pássaro 2: grande, centro-direita -->
+      <g transform="translate(335 114) scale(0.85) rotate(-20 100 90)" fill="rgba(245,237,224,0.8)">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 3;0 -3;0 3" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.9s" begin="-0.35s" repeatCount="indefinite"/>
+          <use href="#asaGeo" xlink:href="#asaGeo">
+            <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.9s" begin="-0.35s" repeatCount="indefinite"/>
+          </use>
+          <g transform="translate(200 0) scale(-1 1)">
+            <g transform="translate(100 90) scale(0.82) translate(-100 -90)">
+              <use href="#asaGeo" xlink:href="#asaGeo">
+                <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.9s" begin="-0.35s" repeatCount="indefinite"/>
+              </use>
+            </g>
+          </g>
+          <use href="#corpoGeo" xlink:href="#corpoGeo"/>
+        </g>
+      </g>
+
+      <!-- Pássaro 3: médio-grande, canto inferior direito -->
+      <g transform="translate(490 197) scale(0.7) rotate(-22 100 90)" fill="rgba(245,237,224,0.75)">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 3;0 -3;0 3" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.8s" begin="-0.6s" repeatCount="indefinite"/>
+          <use href="#asaGeo" xlink:href="#asaGeo">
+            <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.8s" begin="-0.6s" repeatCount="indefinite"/>
+          </use>
+          <g transform="translate(200 0) scale(-1 1)">
+            <g transform="translate(100 90) scale(0.82) translate(-100 -90)">
+              <use href="#asaGeo" xlink:href="#asaGeo">
+                <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.8s" begin="-0.6s" repeatCount="indefinite"/>
+              </use>
+            </g>
+          </g>
+          <use href="#corpoGeo" xlink:href="#corpoGeo"/>
+        </g>
+      </g>
+
+      <!-- Pássaro 4: médio, centro-esquerda -->
+      <g transform="translate(190 96) scale(0.6) rotate(-10 100 90)" fill="rgba(245,237,224,0.7)">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 3;0 -3;0 3" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.75s" begin="-0.2s" repeatCount="indefinite"/>
+          <use href="#asaGeo" xlink:href="#asaGeo">
+            <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.75s" begin="-0.2s" repeatCount="indefinite"/>
+          </use>
+          <g transform="translate(200 0) scale(-1 1)">
+            <g transform="translate(100 90) scale(0.82) translate(-100 -90)">
+              <use href="#asaGeo" xlink:href="#asaGeo">
+                <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.75s" begin="-0.2s" repeatCount="indefinite"/>
+              </use>
+            </g>
+          </g>
+          <use href="#corpoGeo" xlink:href="#corpoGeo"/>
+        </g>
+      </g>
+
+      <!-- Pássaro 5: médio, direita-alto -->
+      <g transform="translate(465 70) scale(0.55) rotate(-24 100 90)" fill="rgba(245,237,224,0.65)">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 3;0 -3;0 3" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.7s" begin="-0.5s" repeatCount="indefinite"/>
+          <use href="#asaGeo" xlink:href="#asaGeo">
+            <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.7s" begin="-0.5s" repeatCount="indefinite"/>
+          </use>
+          <g transform="translate(200 0) scale(-1 1)">
+            <g transform="translate(100 90) scale(0.82) translate(-100 -90)">
+              <use href="#asaGeo" xlink:href="#asaGeo">
+                <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.7s" begin="-0.5s" repeatCount="indefinite"/>
+              </use>
+            </g>
+          </g>
+          <use href="#corpoGeo" xlink:href="#corpoGeo"/>
+        </g>
+      </g>
+
+      <!-- Pássaro 6: pequeno, esquerda -->
+      <g transform="translate(15 100) scale(0.45) rotate(-16 100 90)" fill="rgba(245,237,224,0.6)">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 3;0 -3;0 3" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.65s" begin="-0.15s" repeatCount="indefinite"/>
+          <use href="#asaGeo" xlink:href="#asaGeo">
+            <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.65s" begin="-0.15s" repeatCount="indefinite"/>
+          </use>
+          <g transform="translate(200 0) scale(-1 1)">
+            <g transform="translate(100 90) scale(0.82) translate(-100 -90)">
+              <use href="#asaGeo" xlink:href="#asaGeo">
+                <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.65s" begin="-0.15s" repeatCount="indefinite"/>
+              </use>
+            </g>
+          </g>
+          <use href="#corpoGeo" xlink:href="#corpoGeo"/>
+        </g>
+      </g>
+
+      <!-- Pássaro 7: pequeno, centro-alto -->
+      <g transform="translate(300 34) scale(0.4) rotate(-12 100 90)" fill="rgba(245,237,224,0.55)">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 3;0 -3;0 3" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.6s" begin="-0.1s" repeatCount="indefinite"/>
+          <use href="#asaGeo" xlink:href="#asaGeo">
+            <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.6s" begin="-0.1s" repeatCount="indefinite"/>
+          </use>
+          <g transform="translate(200 0) scale(-1 1)">
+            <g transform="translate(100 90) scale(0.82) translate(-100 -90)">
+              <use href="#asaGeo" xlink:href="#asaGeo">
+                <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.6s" begin="-0.1s" repeatCount="indefinite"/>
+              </use>
+            </g>
+          </g>
+          <use href="#corpoGeo" xlink:href="#corpoGeo"/>
+        </g>
+      </g>
+
+      <!-- Pássaro 8: pequeno, meio da cena -->
+      <g transform="translate(115 58) scale(0.35) rotate(-18 100 90)" fill="rgba(245,237,224,0.5)">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 3;0 -3;0 3" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.62s" begin="-0.4s" repeatCount="indefinite"/>
+          <use href="#asaGeo" xlink:href="#asaGeo">
+            <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.62s" begin="-0.4s" repeatCount="indefinite"/>
+          </use>
+          <g transform="translate(200 0) scale(-1 1)">
+            <g transform="translate(100 90) scale(0.82) translate(-100 -90)">
+              <use href="#asaGeo" xlink:href="#asaGeo">
+                <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.62s" begin="-0.4s" repeatCount="indefinite"/>
+              </use>
+            </g>
+          </g>
+          <use href="#corpoGeo" xlink:href="#corpoGeo"/>
+        </g>
+      </g>
+
+      <!-- Pássaro 9: bem pequeno, ao fundo -->
+      <g transform="translate(535 38) scale(0.25) rotate(-15 100 90)" fill="rgba(245,237,224,0.45)">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 3;0 -3;0 3" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.55s" begin="-0.25s" repeatCount="indefinite"/>
+          <use href="#asaGeo" xlink:href="#asaGeo">
+            <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.55s" begin="-0.25s" repeatCount="indefinite"/>
+          </use>
+          <g transform="translate(200 0) scale(-1 1)">
+            <g transform="translate(100 90) scale(0.82) translate(-100 -90)">
+              <use href="#asaGeo" xlink:href="#asaGeo">
+                <animateTransform attributeName="transform" type="rotate" values="16 100 90;-30 100 90;16 100 90" keyTimes="0;0.45;1" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" dur="0.55s" begin="-0.25s" repeatCount="indefinite"/>
+              </use>
+            </g>
+          </g>
+          <use href="#corpoGeo" xlink:href="#corpoGeo"/>
+        </g>
+      </g>
+    </svg>
+  </div>
   <div class="hero-inner" id="heroInner">
- 
-    <div class="hero-logo-wrap" id="heroLogoWrap">
-      <img class="hero-logo-fallback" id="heroLogoFallback" src="img/LOGO---ESSENCIA-DE-SERRA.png" alt="Essência da Serra" />
+    <div class="hero-col hero-col-left">
+      <div class="hero-logo-wrap" id="heroLogoWrap">
+        <img class="hero-logo-fallback" id="heroLogoFallback" src="img/LOGO---ESSENCIA-DE-SERRA.png" alt="Essência da Serra" />
+      </div>
+      <p class="hero-sub reveal in d2">Moda autoral · Serra da Capivara · Piauí</p>
+      <p class="hero-sub reveal in d2">Tradição, arte e identidade em cada detalhe</p>
+      <a href="#colecoes" class="hero-cta reveal in d3">Ver coleções</a>
     </div>
-    <p class="hero-sub reveal in d2">Moda autoral · Serra da Capivara · Piauí</p>
-    <p class="hero-sub reveal in d2">Tradição, arte e identidade em cada detalhe</p>
-    <a href="#colecoes" class="hero-cta reveal in d3">Ver coleções</a>
+    <div class="hero-col hero-col-right"></div>
   </div>
   <div class="scroll-cue"><span>Role</span><span class="line"></span></div>
 </header>
@@ -214,7 +392,7 @@
 <div id="colecoes"></div>
 
 <section class="coll" data-od-id="colecao-serra">
-  <div class="coll-bg"><div class="ph" style="background-image:radial-gradient(120% 80% at 60% 20%, rgba(216,155,78,.6), transparent 55%),linear-gradient(160deg,#a4652f,#6d3f1e 60%,#3f2613)"><span class="ph-lbl">Campanha · paisagem da Serra</span></div></div>
+  <div class="coll-bg"><div class="ph" style="background-image:linear-gradient(160deg,#a4652f,#6d3f1e 100%)"><span class="ph-lbl">Campanha · paisagem da Serra</span></div></div>
   <div class="coll-inner">
     <span class="coll-num reveal">Coleção 01</span>
     <h2 class="display reveal d1">Serra</h2>
@@ -226,7 +404,7 @@
 <div class="blob-div" style="margin-top:-2px;background:transparent"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#8B3A1E" d="M0,0 C260,80 520,10 760,44 C980,74 1160,20 1440,56 L1440,100 L0,100 Z"/></svg></div>
 
 <section class="coll" data-od-id="colecao-rupestre">
-  <div class="coll-bg"><div class="ph" style="background-image:radial-gradient(120% 90% at 30% 30%, rgba(139,58,30,.7), transparent 55%),linear-gradient(150deg,#8b3a1e,#5a2413 60%,#331107)"><span class="ph-lbl">Campanha · símbolos ancestrais</span></div></div>
+  <div class="coll-bg"><div class="ph" style="background-image:linear-gradient(150deg,#8b3a1e,#5a2413 100%)"><span class="ph-lbl">Campanha · símbolos ancestrais</span></div></div>
   <div class="coll-inner">
     <span class="coll-num reveal">Coleção 02</span>
     <h2 class="display reveal d1">Rupestre</h2>
@@ -238,7 +416,7 @@
 <div class="blob-div" style="background:transparent"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#A03D22" d="M0,0 C300,60 560,4 820,40 C1040,70 1200,26 1440,48 L1440,100 L0,100 Z"/></svg></div>
 
 <section class="coll" data-od-id="colecao-raizes">
-  <div class="coll-bg"><div class="ph" style="background-image:radial-gradient(120% 90% at 70% 20%, rgba(216,155,78,.55), transparent 55%),linear-gradient(150deg,#a03d22,#7a3319 55%,#4a1e0e)"><span class="ph-lbl">Campanha · saberes populares</span></div></div>
+  <div class="coll-bg"><div class="ph" style="background-image:linear-gradient(150deg,#a03d22,#7a3319 100%)"><span class="ph-lbl">Campanha · saberes populares</span></div></div>
   <div class="coll-inner">
     <span class="coll-num reveal">Coleção 03</span>
     <h2 class="display reveal d1">Raízes</h2>
@@ -250,7 +428,7 @@
 <div class="blob-div" style="background:transparent"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#D89B4E" d="M0,0 C240,70 520,8 780,42 C1000,70 1200,22 1440,52 L1440,100 L0,100 Z"/></svg></div>
 
 <section class="coll" data-od-id="colecao-sol">
-  <div class="coll-bg"><div class="ph warm" style="background-image:radial-gradient(120% 90% at 50% 10%, rgba(255,206,120,.8), transparent 55%),linear-gradient(160deg,#e0a75a,#c0562f 60%,#8b3a1e)"><span class="ph-lbl">Campanha · pôr do sol na caatinga</span></div></div>
+  <div class="coll-bg"><div class="ph warm" style="background-image:linear-gradient(160deg,#e0a75a,#c0562f 100%)"><span class="ph-lbl">Campanha · pôr do sol na caatinga</span></div></div>
   <div class="coll-inner">
     <span class="coll-num reveal">Coleção 04</span>
     <h2 class="display reveal d1">Sol da Caatinga</h2>
@@ -320,19 +498,36 @@
         <h4>Navegação</h4>
         <div class="foot-nav-links">
           <a href="#colecoes">Coleções</a>
-          <a href="#categorias">O Acervo</a>
-          <a href="#territorio">Nossa História</a>
-          <a href="#">Atacado & Parcerias</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="foot-bottom">
       <p>© 2026 Essência da Serra. Todos os direitos reservados.</p>
       <p>Feito à mão no Piauí, Brasil.</p>
     </div>
   </div>
 </footer>
+
+<!-- ===== SEARCH OVERLAY MODAL ===== -->
+<div class="search-overlay" id="searchOverlay" aria-hidden="true">
+  <div class="search-modal">
+    <button class="search-close-btn" id="searchCloseBtn" aria-label="Fechar busca">&times;</button>
+    <div class="search-modal-header">
+      <div class="search-input-wrap">
+        <svg class="search-modal-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="modalSearchInput" placeholder="O que você procura? (ex: crochê, vestido, bolsas...)" autocomplete="off" />
+      </div>
+      <div class="search-tags">
+        <span class="search-tag-label">Sugestões:</span>
+        <button class="search-tag-btn" data-query="crochê">Crochê</button>
+        <button class="search-tag-btn" data-query="macramê">Macramê</button>
+        <button class="search-tag-btn" data-query="vestido">Vestidos</button>
+        <button class="search-tag-btn" data-query="camisa">Camisas</button>
+        <button class="search-tag-btn" data-query="bolsas">Bolsas</button>
+        <button class="search-tag-btn" data-query="biojoias">Biojoias</button>
+      </div>
+    </div>
+    <div class="search-modal-body" id="modalSearchResults">
+      <p class="search-empty-state">Digite algo ou escolha uma sugestão para buscar no acervo da Serra da Capivara.</p>
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -344,17 +539,17 @@
   }, {threshold:.16, rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-  /* ---- Logo do hero: 1) serra desenha, 2) nome aparece (sem animação) ---- */
+  /* ---- Logo do hero ---- */
   var logoWrap = document.getElementById('heroLogoWrap');
   function animateSerra(serraPaths){
     var serra = serraPaths.map(function(p){
       var bb; try{ bb=p.getBBox(); }catch(e){ bb={x:0}; }
       return {p:p, x:bb.x, len:(function(){try{return p.getTotalLength();}catch(e){return 1200;}})()};
     });
-    serra.sort(function(a,b){ return a.x-b.x; });   /* esquerda -> direita */
+    serra.sort(function(a,b){ return a.x-b.x; });
     var stagger=150, acc=0, serraEnd=0;
     serra.forEach(function(m){
-      var dur = Math.max(1100, Math.min(3500, m.len*0.75));  // um pouco mais rápido
+      var dur = Math.max(1100, Math.min(3500, m.len*0.75));
       m.p.style.setProperty('--len', Math.ceil(m.len));
       m.p.style.setProperty('--dur', Math.round(dur)+'ms');
       m.p.style.setProperty('--delay', Math.round(acc)+'ms');
@@ -362,7 +557,6 @@
       serraEnd = Math.max(serraEnd, acc + dur*0.45);
     });
     var start = 500;
-    // sincroniza: fade-in do nome começa quando a serra está ~72% desenhada e termina junto com ela
     var nameStart = start + serraEnd*0.72;
     var nameDur = Math.max(700, (start + serraEnd) - nameStart + 150);
     var nomePaths = logoWrap.querySelectorAll('.hero-logo-svg path.nome');
@@ -377,8 +571,6 @@
   }
   function bbMid(p){ try{ var b=p.getBBox(); return b.y + b.height/2; }catch(e){ return 999; } }
   if(logoWrap){
-    // 1) nome: formas lisas do logo-traced-1.svg  2) serra: centerline do logo-traced.svg
-    // SVGs embutidos inline (funciona em file:// e offline, sem fetch/CORS)
     (function(){
       try{
         var elS = document.getElementById('svg-serra');
@@ -386,39 +578,35 @@
         if(!elS || !elN) throw new Error('svg inline ausente');
         var d1 = new DOMParser().parseFromString(elN.textContent.trim(),'image/svg+xml');
         var d2 = new DOMParser().parseFromString(elS.textContent.trim(),'image/svg+xml');
-      var s1 = d1.querySelector('svg'), s2 = d2.querySelector('svg');
-      if(!s1 || !s2 || d1.querySelector('parsererror') || d2.querySelector('parsererror')) throw new Error('svg invalido');
+        var s1 = d1.querySelector('svg'), s2 = d2.querySelector('svg');
+        if(!s1 || !s2 || d1.querySelector('parsererror') || d2.querySelector('parsererror')) throw new Error('svg invalido');
 
-      // SVG destino unico no mesmo viewBox
-      var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-      svg.setAttribute('viewBox','0 0 900 509');
-      svg.setAttribute('class','hero-logo-svg');
-      svg.setAttribute('preserveAspectRatio','xMidYMid meet');
-      var thr = 509*0.42;
+        var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        svg.setAttribute('viewBox','0 0 900 509');
+        svg.setAttribute('class','hero-logo-svg');
+        svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+        var thr = 509*0.42;
 
-      // NOME — pega paths da metade de baixo do logo-traced-1 (formas lisas)
-      s1.querySelectorAll('path').forEach(function(p){ p.removeAttribute('class'); p.removeAttribute('fill'); });
-      var fb = document.getElementById('heroLogoFallback');
-      logoWrap.appendChild(svg);   // precisa estar no DOM p/ getBBox
-      // insere primeiro os do nome (embaixo), depois serra (por cima)
-      Array.prototype.slice.call(s1.querySelectorAll('path')).forEach(function(p){
-        var probe = svg.appendChild(p.cloneNode(true));
-        if(bbMid(probe) >= thr){ probe.setAttribute('class','nome'); }
-        else { svg.removeChild(probe); }   // descarta a serra "gorda" do arquivo 1
-      });
+        s1.querySelectorAll('path').forEach(function(p){ p.removeAttribute('class'); p.removeAttribute('fill'); });
+        var fb = document.getElementById('heroLogoFallback');
+        logoWrap.appendChild(svg);
+        Array.prototype.slice.call(s1.querySelectorAll('path')).forEach(function(p){
+          var probe = svg.appendChild(p.cloneNode(true));
+          if(bbMid(probe) >= thr){ probe.setAttribute('class','nome'); }
+          else { svg.removeChild(probe); }
+        });
 
-      // SERRA — centerline do logo-traced.svg, so a metade de cima
-      var serraPaths = [];
-      Array.prototype.slice.call(s2.querySelectorAll('path')).forEach(function(p){
-        var probe = svg.appendChild(p.cloneNode(true));
-        probe.removeAttribute('class'); probe.removeAttribute('fill'); probe.removeAttribute('stroke'); probe.removeAttribute('stroke-width');
-        if(bbMid(probe) < thr){ probe.setAttribute('class','serra'); serraPaths.push(probe); }
-        else { svg.removeChild(probe); }
-      });
+        var serraPaths = [];
+        Array.prototype.slice.call(s2.querySelectorAll('path')).forEach(function(p){
+          var probe = svg.appendChild(p.cloneNode(true));
+          probe.removeAttribute('class'); probe.removeAttribute('fill'); probe.removeAttribute('stroke'); probe.removeAttribute('stroke-width');
+          if(bbMid(probe) < thr){ probe.setAttribute('class','serra'); serraPaths.push(probe); }
+          else { svg.removeChild(probe); }
+        });
 
-      if(fb) fb.remove();
-      animateSerra(serraPaths);
-      } catch(e){ /* mantém o PNG fallback já visível */ }
+        if(fb) fb.remove();
+        animateSerra(serraPaths);
+      } catch(e){}
     })();
   }
 
@@ -428,7 +616,7 @@
   }, {threshold:.35});
   ['rupPanel','mapWrap'].forEach(function(id){ var el=document.getElementById(id); if(el) drawIO.observe(el); });
 
-  /* ---- Manifesto: revela linha a linha ---- */
+  /* ---- Manifesto ---- */
   var lines = document.querySelectorAll('#manifesto .ln');
   var mio = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -444,8 +632,9 @@
   var nav = document.getElementById('nav');
   function onNav(){ if(window.scrollY > window.innerHeight*0.72) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
   onNav();
+  window.addEventListener('scroll', function(){ onNav(); if(!ticking){ requestAnimationFrame(parallax); ticking=true; } }, {passive:true});
 
-  /* ---- Parallax (hero + coleções) ---- */
+  /* ---- Parallax ---- */
   var heroBg = document.getElementById('heroBg');
   var heroInner = document.getElementById('heroInner');
   var heroRidge = document.getElementById('heroRidge');
@@ -466,10 +655,9 @@
     }
     ticking = false;
   }
-  window.addEventListener('scroll', function(){ onNav(); if(!ticking){ requestAnimationFrame(parallax); ticking=true; } }, {passive:true});
   parallax();
 
-  /* ---- Toggle categorias (Prada) ---- */
+  /* ---- Toggle categorias ---- */
   var tbtns = document.querySelectorAll('.toggle button');
   tbtns.forEach(function(b){
     b.addEventListener('click', function(){
@@ -482,14 +670,9 @@
     });
   });
 
-  /* ---- Feito à mão: troca imagem conforme bloco no centro ---- */
+  /* ---- Feito à mão ---- */
   var frame = document.getElementById('hmFrame');
-  var hmVariants = [
-    'radial-gradient(120% 90% at 30% 20%, rgba(216,155,78,.6), transparent 55%),linear-gradient(150deg,#7d5230,#4a2c15)',
-    'radial-gradient(120% 90% at 70% 30%, rgba(139,58,30,.55), transparent 55%),linear-gradient(150deg,#6b4429,#3f2613)',
-    'radial-gradient(120% 90% at 40% 60%, rgba(192,86,47,.55), transparent 55%),linear-gradient(150deg,#a4562b,#5a2413)',
-    'radial-gradient(120% 90% at 60% 20%, rgba(216,155,78,.65), transparent 55%),linear-gradient(150deg,#c79966,#7a3d1f)'
-  ];
+  var hmVariants = ['linear-gradient(150deg,#7d5230,#4a2c15)','linear-gradient(150deg,#6b4429,#3f2613)','linear-gradient(150deg,#a4562b,#5a2413)','linear-gradient(150deg,#c79966,#7a3d1f)'];
   var hmLabels = ['Textura do crochê','Nós do macramê','Pintura em tecido','Bordado & biojoias'];
   var hmBlocks = document.querySelectorAll('.hm-block');
   if(frame && hmBlocks.length){
@@ -505,9 +688,7 @@
     hmBlocks.forEach(function(b){ hmIO.observe(b); });
   }
 
-  /* ---- Cursor custom removido ---- */
-
-  /* ---- Menu mobile (drawer) ---- */
+  /* ---- Menu mobile ---- */
   var toggle = document.getElementById('navToggle');
   var drawer = document.getElementById('drawer');
   function closeMenu(){ document.body.classList.remove('menu-open'); if(toggle) toggle.setAttribute('aria-expanded','false'); }
@@ -522,6 +703,107 @@
   /* ---- Newsletter ---- */
   var nf = document.getElementById('newsForm');
   if(nf){ nf.addEventListener('submit', function(ev){ ev.preventDefault(); var em=document.getElementById('email').value; document.getElementById('newsMsg').textContent = em? 'Obrigada! Você entrou para a nossa lista.' : ''; nf.reset(); }); }
+
+  /* ---- Barra de Pesquisa ---- */
+  var catalogItems = [
+    { id: 'cat-crochet', title: 'Vestuário em crochê', cat: 'Vestuário', desc: 'Vestidos, blusas e saias manuais', price: 'R$ 490', img: 'img/product_vestido_1.png', keywords: 'croche crochê vestido vestidos saia saias blusa blusas vestuario vestuário artesanal' },
+    { id: 'cat-camisas', title: 'Camisas pintadas à mão', cat: 'Vestuário', desc: 'Algodão natural e arte rupestre', price: 'R$ 320', img: 'img/product_camisa_1.png', keywords: 'camisa camisas pintada mão rupestre algodao algodão pintura arte' },
+    { id: 'cat-bolsas', title: 'Bolsas em crochê e macramê', cat: 'Bolsas', desc: 'Fibras naturais e macramê', price: 'R$ 280', img: 'img/product_bolsa_1.png', keywords: 'bolsa bolsas croche crochê macrame macramê fibra fibras acessorio' },
+    { id: 'cat-bordado', title: 'Saídas e xales bordados', cat: 'Vestuário', desc: 'Bordado manual artesanal', price: 'R$ 410', img: 'img/product_vestido_1.png', keywords: 'saida saídas xale xales bordado bordados manual' },
+    { id: 'cat-biojoias', title: 'Colares e brincos em biojoias', cat: 'Acessórios', desc: 'Sementes, fibras e pedras locais', price: 'R$ 120', img: 'img/product_bolsa_1.png', keywords: 'biojoia biojoias colar colares brinco brincos semente sementes acessorio' },
+    { id: 'cat-cintos', title: 'Cintos em macramê', cat: 'Acessórios', desc: 'Trançado manual em fios de algodão', price: 'R$ 95', img: 'img/product_bolsa_1.png', keywords: 'cinto cintos macrame macramê trancado trançado acessorio' },
+    { id: 'cat-chapeus', title: 'Chapéus de palha trabalhados', cat: 'Acessórios', desc: 'Palha de carnaúba trançada', price: 'R$ 160', img: 'img/product_bolsa_1.png', keywords: 'chapeu chapéu chapéus palha carnauba carnaúba sol praia' },
+    { id: 'cat-carteiras', title: 'Carteiras e clutches em crochê', cat: 'Bolsas', desc: 'Peça única feita à mão', price: 'R$ 210', img: 'img/product_bolsa_1.png', keywords: 'carteira carteiras clutch clutches croche crochê bolsa bolsas' }
+  ];
+
+  function openSearchModal(initialQuery){
+    var overlay = document.getElementById('searchOverlay');
+    var input = document.getElementById('modalSearchInput');
+    if(!overlay) return;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if(input){
+      input.value = initialQuery || '';
+      setTimeout(function(){ input.focus(); }, 150);
+      renderSearchResults(input.value);
+    }
+  }
+
+  function closeSearchModal(){
+    var overlay = document.getElementById('searchOverlay');
+    if(!overlay) return;
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function renderSearchResults(query){
+    var resultsEl = document.getElementById('modalSearchResults');
+    if(!resultsEl) return;
+    var q = (query || '').trim().toLowerCase();
+    if(!q){
+      resultsEl.innerHTML = '<p class="search-empty-state">Digite algo ou escolha uma sugestão acima para buscar no acervo.</p>';
+      return;
+    }
+    var matches = catalogItems.filter(function(item){
+      return item.title.toLowerCase().indexOf(q) !== -1 ||
+             item.desc.toLowerCase().indexOf(q) !== -1 ||
+             item.cat.toLowerCase().indexOf(q) !== -1 ||
+             item.keywords.toLowerCase().indexOf(q) !== -1;
+    });
+
+    if(!matches.length){
+      resultsEl.innerHTML = '<p class="search-empty-state">Nenhum resultado encontrado para "<strong>' + escapeHtml(q) + '</strong>". Tente buscar por crochê, bolsas, vestidos ou macramê.</p>';
+      return;
+    }
+
+    var html = '<div class="search-results-grid">';
+    matches.forEach(function(item){
+      html += '<a href="produto.html?id=' + item.id + '" class="search-item-card" onclick="closeSearchModal()">' +
+                '<div class="search-item-thumb" style="background-image:url(\'' + item.img + '\')"></div>' +
+                '<div class="search-item-info">' +
+                  '<span class="search-item-cat">' + item.cat + '</span>' +
+                  '<h4 class="search-item-title">' + item.title + '</h4>' +
+                  '<span class="search-item-price">A partir de ' + item.price + '</span>' +
+                '</div>' +
+              '</a>';
+    });
+    html += '</div>';
+    resultsEl.innerHTML = html;
+  }
+
+  function escapeHtml(str){ return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  var openBtn = document.getElementById('openSearchBtn');
+  var drawerBtn = document.getElementById('drawerSearchBtn');
+  var closeBtn = document.getElementById('searchCloseBtn');
+  var modalInput = document.getElementById('modalSearchInput');
+  var overlayEl = document.getElementById('searchOverlay');
+  var tagBtns = document.querySelectorAll('.search-tag-btn');
+
+  if(openBtn) openBtn.addEventListener('click', function(){ openSearchModal(); });
+  if(drawerBtn) drawerBtn.addEventListener('click', function(){ closeMenu(); openSearchModal(); });
+  if(closeBtn) closeBtn.addEventListener('click', closeSearchModal);
+  if(overlayEl){ overlayEl.addEventListener('click', function(e){ if(e.target === overlayEl) closeSearchModal(); }); }
+  if(modalInput){ modalInput.addEventListener('input', function(){ renderSearchResults(this.value); }); }
+
+  tagBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tagBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var q = btn.getAttribute('data-query');
+      if(modalInput) modalInput.value = q;
+      renderSearchResults(q);
+    });
+  });
+
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      var overlay = document.getElementById('searchOverlay');
+      if(overlay && overlay.classList.contains('open')) closeSearchModal();
+    }
+  });
 })();
 </script>
 </body>

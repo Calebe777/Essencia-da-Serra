@@ -7,7 +7,7 @@
   <meta name="description" content="Conheça os detalhes desta peça artesanal inspirada na Serra da Capivara.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="produto.css">
 </head>
@@ -25,6 +25,10 @@
       <a href="index.html#categorias">Bolsas</a>
       <a href="index.html#categorias">Acessórios</a>
       <a href="index.html#territorio">Sobre</a>
+      <button class="nav-search-btn" id="openSearchBtn" aria-label="Buscar no acervo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Buscar</span>
+      </button>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -32,6 +36,7 @@
 
 <!-- Drawer mobile -->
 <div class="drawer" id="drawer">
+  <button class="drawer-search-btn" id="drawerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Buscar no acervo</button>
   <a href="index.html#colecoes" data-close>Coleções</a>
   <a href="index.html#categorias" data-close>Vestuário</a>
   <a href="index.html#categorias" data-close>Acessórios</a>
@@ -305,7 +310,141 @@
   /* ---- Newsletter ---- */
   var nf = document.getElementById('newsForm');
   if(nf){ nf.addEventListener('submit', function(ev){ ev.preventDefault(); var em=document.getElementById('email').value; document.getElementById('newsMsg').textContent = em? 'Obrigada! Você entrou para a nossa lista.' : ''; nf.reset(); }); }
+
+  /* ---- Barra de Pesquisa Elegante & Modal ---- */
+  var catalogItems = [
+    { id: 'cat-crochet', title: 'Vestuário em crochê', cat: 'Vestuário', desc: 'Vestidos, blusas e saias manuais', price: 'R$ 490', img: 'img/product_vestido_1.png', keywords: 'croche crochê vestido vestidos saia saias blusa blusas vestuario vestuário artesanal' },
+    { id: 'cat-camisas', title: 'Camisas pintadas à mão', cat: 'Vestuário', desc: 'Algodão natural e arte rupestre', price: 'R$ 320', img: 'img/product_camisa_1.png', keywords: 'camisa camisas pintada mão rupestre algodao algodão pintura arte' },
+    { id: 'cat-bolsas', title: 'Bolsas em crochê e macramê', cat: 'Bolsas', desc: 'Fibras naturais e macramê', price: 'R$ 280', img: 'img/product_bolsa_1.png', keywords: 'bolsa bolsas croche crochê macrame macramê fibra fibras acessorio' },
+    { id: 'cat-bordado', title: 'Saídas e xales bordados', cat: 'Vestuário', desc: 'Bordado manual artesanal', price: 'R$ 410', img: 'img/product_vestido_1.png', keywords: 'saida saídas xale xales bordado bordados manual' },
+    { id: 'cat-biojoias', title: 'Colares e brincos em biojoias', cat: 'Acessórios', desc: 'Sementes, fibras e pedras locais', price: 'R$ 120', img: 'img/product_bolsa_1.png', keywords: 'biojoia biojoias colar colares brinco brincos semente sementes acessorio' },
+    { id: 'cat-cintos', title: 'Cintos em macramê', cat: 'Acessórios', desc: 'Trançado manual em fios de algodão', price: 'R$ 95', img: 'img/product_bolsa_1.png', keywords: 'cinto cintos macrame macramê trancado trançado acessorio' },
+    { id: 'cat-chapeus', title: 'Chapéus de palha trabalhados', cat: 'Acessórios', desc: 'Palha de carnaúba trançada', price: 'R$ 160', img: 'img/product_bolsa_1.png', keywords: 'chapeu chapéu chapéus palha carnauba carnaúba sol praia' },
+    { id: 'cat-carteiras', title: 'Carteiras e clutches em crochê', cat: 'Bolsas', desc: 'Peça única feita à mão', price: 'R$ 210', img: 'img/product_bolsa_1.png', keywords: 'carteira carteiras clutch clutches croche crochê bolsa bolsas' }
+  ];
+
+  function openSearchModal(initialQuery){
+    var overlay = document.getElementById('searchOverlay');
+    var input = document.getElementById('modalSearchInput');
+    if(!overlay) return;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if(input){
+      input.value = initialQuery || '';
+      setTimeout(function(){ input.focus(); }, 150);
+      renderSearchResults(input.value);
+    }
+  }
+
+  function closeSearchModal(){
+    var overlay = document.getElementById('searchOverlay');
+    if(!overlay) return;
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function renderSearchResults(query){
+    var resultsEl = document.getElementById('modalSearchResults');
+    if(!resultsEl) return;
+    var q = (query || '').trim().toLowerCase();
+    if(!q){
+      resultsEl.innerHTML = '<p class="search-empty-state">Digite algo ou escolha uma sugestão acima para buscar no acervo.</p>';
+      return;
+    }
+    var matches = catalogItems.filter(function(item){
+      return item.title.toLowerCase().indexOf(q) !== -1 ||
+             item.desc.toLowerCase().indexOf(q) !== -1 ||
+             item.cat.toLowerCase().indexOf(q) !== -1 ||
+             item.keywords.toLowerCase().indexOf(q) !== -1;
+    });
+
+    if(!matches.length){
+      resultsEl.innerHTML = '<p class="search-empty-state">Nenhum resultado encontrado para "<strong>' + escapeHtml(q) + '</strong>". Tente buscar por crochê, bolsas, vestidos ou macramê.</p>';
+      return;
+    }
+
+    var html = '<div class="search-results-grid">';
+    matches.forEach(function(item){
+      html += '<a href="produto.html?id=' + item.id + '" class="search-item-card" onclick="closeSearchModal()">' +
+                '<div class="search-item-thumb" style="background-image:url(\'' + item.img + '\')"></div>' +
+                '<div class="search-item-info">' +
+                  '<span class="search-item-cat">' + item.cat + '</span>' +
+                  '<h4 class="search-item-title">' + item.title + '</h4>' +
+                  '<span class="search-item-price">A partir de ' + item.price + '</span>' +
+                '</div>' +
+              '</a>';
+    });
+    html += '</div>';
+    resultsEl.innerHTML = html;
+  }
+
+  function escapeHtml(str){ return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  var openBtn = document.getElementById('openSearchBtn');
+  var drawerBtn = document.getElementById('drawerSearchBtn');
+  var closeBtn = document.getElementById('searchCloseBtn');
+  var modalInput = document.getElementById('modalSearchInput');
+  var overlayEl = document.getElementById('searchOverlay');
+  var tagBtns = document.querySelectorAll('.search-tag-btn');
+
+  if(openBtn) openBtn.addEventListener('click', function(){ openSearchModal(); });
+  if(drawerBtn) drawerBtn.addEventListener('click', function(){ closeMenu(); openSearchModal(); });
+  if(closeBtn) closeBtn.addEventListener('click', closeSearchModal);
+
+  if(overlayEl){
+    overlayEl.addEventListener('click', function(e){
+      if(e.target === overlayEl) closeSearchModal();
+    });
+  }
+
+  if(modalInput){
+    modalInput.addEventListener('input', function(){ renderSearchResults(this.value); });
+  }
+
+  tagBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tagBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var q = btn.getAttribute('data-query');
+      if(modalInput) modalInput.value = q;
+      renderSearchResults(q);
+    });
+  });
+
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      var overlay = document.getElementById('searchOverlay');
+      if(overlay && overlay.classList.contains('open')) closeSearchModal();
+    }
+  });
 })();
 </script>
+
+<!-- ===== SEARCH OVERLAY MODAL ===== -->
+<div class="search-overlay" id="searchOverlay" aria-hidden="true">
+  <div class="search-modal">
+    <button class="search-close-btn" id="searchCloseBtn" aria-label="Fechar busca">&times;</button>
+    <div class="search-modal-header">
+      <div class="search-input-wrap">
+        <svg class="search-modal-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="modalSearchInput" placeholder="O que você procura? (ex: crochê, vestido, bolsas...)" autocomplete="off" />
+      </div>
+      <div class="search-tags">
+        <span class="search-tag-label">Sugestões:</span>
+        <button class="search-tag-btn" data-query="crochê">Crochê</button>
+        <button class="search-tag-btn" data-query="macramê">Macramê</button>
+        <button class="search-tag-btn" data-query="vestido">Vestidos</button>
+        <button class="search-tag-btn" data-query="camisa">Camisas</button>
+        <button class="search-tag-btn" data-query="bolsas">Bolsas</button>
+        <button class="search-tag-btn" data-query="biojoias">Biojoias</button>
+      </div>
+    </div>
+    <div class="search-modal-body" id="modalSearchResults">
+      <p class="search-empty-state">Digite algo ou escolha uma sugestão para buscar no acervo da Serra da Capivara.</p>
+    </div>
+  </div>
+</div>
 </body>
 </html>

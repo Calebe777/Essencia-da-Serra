@@ -382,21 +382,21 @@
   .artisans-head {
     text-align: center;
     max-width: 680px;
-    margin: 0 auto clamp(40px, 6vw, 70px);
+    margin: 0 auto clamp(36px, 5vw, 60px);
   }
   .artisans-head h2 {
-    font-size: clamp(34px, 5vw, 62px);
-    margin: 14px 0 16px;
+    font-size: clamp(32px, 4.5vw, 56px);
+    margin: 12px 0 14px;
   }
   .artisans-sub {
     color: var(--tinta-70);
-    font-size: clamp(15px, 1.5vw, 18px);
-    line-height: 1.6;
+    font-size: clamp(14px, 1.4vw, 17px);
+    line-height: 1.55;
   }
   .artisans-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(20px, 2.5vw, 36px);
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: clamp(16px, 2vw, 26px);
   }
   .artisan-card {
     background: var(--creme);
@@ -405,75 +405,75 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+    transition: transform .4s var(--ease), box-shadow .4s var(--ease);
   }
   .artisan-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px -20px rgba(46,32,21,.25);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px -16px rgba(46,32,21,.22);
   }
   .artisan-thumb {
-    aspect-ratio: 4/5;
+    aspect-ratio: 1 / 1;
     background-size: cover;
-    background-position: center;
-    transition: transform .9s var(--ease);
+    background-position: center 20%;
+    transition: transform .7s var(--ease);
   }
   .artisan-card:hover .artisan-thumb {
-    transform: scale(1.05);
+    transform: scale(1.04);
   }
   .artisan-info {
-    padding: 24px 20px 28px;
+    padding: 16px 16px 20px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
   }
   .artisan-craft {
     font-family: var(--font-body);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: .18em;
+    letter-spacing: .16em;
     text-transform: uppercase;
     color: var(--terracota);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   .artisan-name {
     font-family: var(--font-body);
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 600;
     color: var(--tinta);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     line-height: 1.25;
   }
   .artisan-bio {
     font-family: var(--font-body);
-    font-size: 13.5px;
+    font-size: 12.5px;
     color: var(--tinta-70);
-    line-height: 1.55;
-    margin-bottom: 20px;
+    line-height: 1.45;
+    margin-bottom: 14px;
     flex-grow: 1;
   }
   .artisan-link {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: .08em;
+    letter-spacing: .06em;
     color: var(--terracota);
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     transition: color .3s, transform .3s;
   }
   .artisan-card:hover .artisan-link {
     color: var(--rupestre);
-    transform: translateX(4px);
+    transform: translateX(3px);
   }
 
   @media (max-width: 1024px) {
     .artisans-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 480px) {
     .artisans-grid {
       grid-template-columns: 1fr;
     }

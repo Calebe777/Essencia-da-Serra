@@ -375,6 +375,110 @@
   .hm-block h3{font-size:clamp(36px,4.5vw,56px);font-weight:500;letter-spacing:0.02em}
   .hm-block p{color:var(--tinta-70);font-size:clamp(15px,1.4vw,18px);max-width:440px}
 
+  /* ===== SEÇÃO ARTESÃS ===== */
+  .artisans {
+    background: var(--creme-2);
+  }
+  .artisans-head {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto clamp(40px, 6vw, 70px);
+  }
+  .artisans-head h2 {
+    font-size: clamp(34px, 5vw, 62px);
+    margin: 14px 0 16px;
+  }
+  .artisans-sub {
+    color: var(--tinta-70);
+    font-size: clamp(15px, 1.5vw, 18px);
+    line-height: 1.6;
+  }
+  .artisans-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(20px, 2.5vw, 36px);
+  }
+  .artisan-card {
+    background: var(--creme);
+    border: 1px solid rgba(46,32,21,.08);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+  }
+  .artisan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px -20px rgba(46,32,21,.25);
+  }
+  .artisan-thumb {
+    aspect-ratio: 4/5;
+    background-size: cover;
+    background-position: center;
+    transition: transform .9s var(--ease);
+  }
+  .artisan-card:hover .artisan-thumb {
+    transform: scale(1.05);
+  }
+  .artisan-info {
+    padding: 24px 20px 28px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .artisan-craft {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    margin-bottom: 8px;
+  }
+  .artisan-name {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--tinta);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .artisan-bio {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--tinta-70);
+    line-height: 1.55;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .artisan-link {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    color: var(--terracota);
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color .3s, transform .3s;
+  }
+  .artisan-card:hover .artisan-link {
+    color: var(--rupestre);
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 1024px) {
+    .artisans-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .artisans-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* ===== TERRITÓRIO ===== */
   .territory .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
   .terr-text h2{font-size:clamp(34px,5vw,62px);margin:16px 0 22px}

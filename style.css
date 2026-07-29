@@ -340,13 +340,13 @@
   .toggle button.active{color:var(--tinta)}
   .toggle button.active::after{transform:scaleX(1)}
   .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,30px)}
-  .cat-card{cursor:pointer}
-  .cat-thumb{aspect-ratio:3/4;overflow:hidden;position:relative}
+  .cat-card{cursor:pointer;display:flex;flex-direction:column}
+  .cat-thumb{aspect-ratio:3/4;overflow:hidden;position:relative;border-radius:4px}
   .cat-thumb .ph{position:absolute;inset:0;transition:transform 1.1s var(--ease)}
   .cat-card:hover .cat-thumb .ph{transform:scale(1.04)}
   .cat-btn{display:none}
-  .cat-meta h3{font-family:var(--font-body);font-size:18px;font-weight:600;letter-spacing:-.01em;color:var(--tinta)}
-  .cat-meta .price{font-family:var(--font-body);font-size:13px;color:var(--terracota);margin-top:6px;letter-spacing:.03em;font-weight:500}
+  .cat-meta{padding-top:16px}
+  .cat-meta h3{font-family:var(--font-body);font-size:16.5px;font-weight:600;letter-spacing:-.01em;color:var(--tinta);line-height:1.35}
   .cat-pane{display:none}
   .cat-pane.show{display:grid}
 

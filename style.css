@@ -274,11 +274,11 @@
   }
 
   .hero-inner{position:relative;z-index:3;padding:0 clamp(20px,5vw,90px);width:100%;max-width:100%;display:grid;grid-template-columns:minmax(360px,600px) 1fr;gap:30px;align-items:center;will-change:transform}
-  .hero-col{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;width:100%}
-  .hero-col-left{align-items:center;justify-content:center;text-align:center;padding:0}
+  .hero-col{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;width:100%}
+  .hero-col-left{align-items:flex-start;justify-content:center;text-align:left;padding:0}
   .hero-col-right{/* 50% livre para a imagem de fundo */}
-  .hero-eyebrow{color:var(--creme);opacity:.85;margin-bottom:26px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.4em;text-transform:uppercase}
-  .hero-logo-wrap{position:relative;width:min(580px,98%);margin:0 auto 24px}
+  .hero-eyebrow{color:var(--creme);opacity:.85;margin-bottom:26px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;text-align:left}
+  .hero-logo-wrap{position:relative;width:min(580px,98%);margin:0 0 24px}
   /* logo: serra desenha o contorno; nome so aparece (sem animacao) */
   .hero-logo-svg{width:100%;height:auto;display:block;overflow:visible;
     filter:drop-shadow(0 10px 40px rgba(30,15,5,.4))}
@@ -296,8 +296,8 @@
   /* fallback: PNG estatico enquanto o SVG nao carrega / se falhar */
   .hero-logo-fallback{width:100%;height:auto;display:block;
     filter:brightness(0) invert(1) drop-shadow(0 10px 46px rgba(30,15,5,.45))}
-  .hero-sub{font-family:var(--font-body);font-size:clamp(14px,1.6vw,20px);font-weight:400;color:var(--creme);opacity:.92;letter-spacing:.02em;text-align:center;margin:3px auto}
-  .hero-cta{margin:28px auto 0;display:inline-block;border:1px solid var(--creme);color:var(--creme);padding:15px 40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;transition:background .4s var(--ease), color .4s var(--ease)}
+  .hero-sub{font-family:var(--font-body);font-size:clamp(14px,1.6vw,20px);font-weight:400;color:var(--creme);opacity:.92;letter-spacing:.02em;text-align:left;margin:3px 0}
+  .hero-cta{margin:28px 0 0;display:inline-block;border:1px solid var(--creme);color:var(--creme);padding:15px 40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;transition:background .4s var(--ease), color .4s var(--ease)}
   .hero-cta:hover{background:var(--creme);color:var(--ferrugem)}
 
   @media (max-width: 900px){

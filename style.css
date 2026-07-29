@@ -1,4 +1,55 @@
 
+  /* ===== Fontes Locais (Albra Family) ===== */
+  @font-face {
+    font-family: 'Albra Text TRIAL';
+    src: url('fonts/AlbraTextTRIAL-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Albra Text TRIAL';
+    src: url('fonts/AlbraTextTRIAL-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Albra Text TRIAL';
+    src: url('fonts/AlbraTextTRIAL-Semi.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Albra Text TRIAL';
+    src: url('fonts/AlbraTextTRIAL-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Albra Text TRIAL';
+    src: url('fonts/AlbraTextTRIAL-Black.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Albra Display TRIAL';
+    src: url('fonts/AlbraDisplayTRIAL-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Albra Display TRIAL';
+    src: url('fonts/AlbraDisplayTRIAL-Semi.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Albra Display TRIAL';
+    src: url('fonts/AlbraDisplayTRIAL-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
   /* ===== Tokens — paleta Serra da Capivara ===== */
   :root{
     --creme:#F5EDE0;
@@ -13,7 +64,7 @@
     --tinta-70:rgba(46,32,21,.7);
     --creme-70:rgba(245,237,224,.72);
 
-    --font-display:'Albra Text TRIAL Semi', 'Albra Text TRIAL', 'Albra', 'Montserrat', serif;
+    --font-display:'Albra Text TRIAL', 'Albra Display TRIAL', 'Montserrat', serif;
     --font-body:'Montserrat', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
     --gap:clamp(20px,5vw,80px);

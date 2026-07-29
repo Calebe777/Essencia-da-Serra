@@ -277,7 +277,7 @@
   .hero-col{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;width:100%}
   .hero-col-left{align-items:flex-start;justify-content:center;text-align:left;padding:0}
   .hero-col-right{/* 50% livre para a imagem de fundo */}
-  .hero-eyebrow{color:var(--creme);opacity:.85;margin-bottom:26px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;text-align:left}
+  .hero-eyebrow{color:var(--creme);opacity:.85;margin-bottom:26px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;text-align:center;width:100%}
   .hero-logo-wrap{position:relative;width:min(580px,98%);margin:0 0 24px}
   /* logo: serra desenha o contorno; nome so aparece (sem animacao) */
   .hero-logo-svg{width:100%;height:auto;display:block;overflow:visible;

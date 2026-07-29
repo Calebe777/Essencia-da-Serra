@@ -297,7 +297,7 @@
   .hero-logo-fallback{width:100%;height:auto;display:block;
     filter:brightness(0) invert(1) drop-shadow(0 10px 46px rgba(30,15,5,.45))}
   .hero-sub{font-family:var(--font-body);font-size:clamp(14px,1.6vw,20px);font-weight:400;color:var(--creme);opacity:.92;letter-spacing:.02em;text-align:left;margin:3px 0}
-  .hero-cta{margin:28px 0 0;display:inline-block;border:1px solid var(--creme);color:var(--creme);padding:15px 40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;transition:background .4s var(--ease), color .4s var(--ease)}
+  .hero-cta{margin:28px auto 0;align-self:center;display:inline-block;border:1px solid var(--creme);color:var(--creme);padding:15px 40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;transition:background .4s var(--ease), color .4s var(--ease)}
   .hero-cta:hover{background:var(--creme);color:var(--ferrugem)}
 
   @media (max-width: 900px){

@@ -13,7 +13,7 @@
     --tinta-70:rgba(46,32,21,.7);
     --creme-70:rgba(245,237,224,.72);
 
-    --font-display:'Montserrat', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-display:'Albra Text TRIAL Semi', 'Albra Text TRIAL', 'Albra', 'Montserrat', serif;
     --font-body:'Montserrat', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
     --gap:clamp(20px,5vw,80px);

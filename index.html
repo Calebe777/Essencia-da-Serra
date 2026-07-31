@@ -90,7 +90,7 @@
       <a href="#territorio">Sobre</a>
       <button class="nav-search-btn" id="openSearchBtn" aria-label="Buscar no acervo">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <span>Buscar</span>
+        <span id="navSearchDynamicText">Busque por brinco...</span>
       </button>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -99,7 +99,7 @@
 
 <!-- Drawer mobile -->
 <div class="drawer" id="drawer">
-  <button class="drawer-search-btn" id="drawerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Buscar no acervo</button>
+  <button class="drawer-search-btn" id="drawerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> <span id="drawerSearchDynamicText">Busque por brinco...</span></button>
   <a href="#colecoes" data-close>Coleções</a>
   <a href="#categorias" data-close>Acervo</a>
   <a href="#artesas" data-close>Artesãs</a>
@@ -786,6 +786,46 @@
       if(overlay && overlay.classList.contains('open')) closeSearchModal();
     }
   });
+
+  /* ---- Efeito Dinâmico de Digitação na Busca ---- */
+  (function initDynamicSearchPlaceholder(){
+    var words = ['brinco...', 'colar...', 'vestido...', 'crochê...', 'bolsas...', 'biojoias...', 'macramê...', 'camisas...'];
+    var wordIdx = 0;
+    var charIdx = 0;
+    var isDeleting = false;
+    var navSpan = document.getElementById('navSearchDynamicText');
+    var drawerSpan = document.getElementById('drawerSearchDynamicText');
+    var modalInput = document.getElementById('modalSearchInput');
+
+    function tick(){
+      var current = words[wordIdx];
+      var sub = isDeleting ? current.substring(0, charIdx - 1) : current.substring(0, charIdx + 1);
+      if(isDeleting) charIdx--; else charIdx++;
+
+      var fullText = 'Busque por ' + sub;
+
+      if(navSpan) navSpan.textContent = fullText;
+      if(drawerSpan) drawerSpan.textContent = fullText;
+      if(modalInput && !modalInput.value){
+        modalInput.setAttribute('placeholder', 'Busque por ' + sub);
+      }
+
+      var speed = isDeleting ? 45 : 95;
+
+      if(!isDeleting && charIdx === current.length){
+        speed = 1700;
+        isDeleting = true;
+      } else if(isDeleting && charIdx === 0){
+        isDeleting = false;
+        wordIdx = (wordIdx + 1) % words.length;
+        speed = 350;
+      }
+
+      setTimeout(tick, speed);
+    }
+
+    setTimeout(tick, 400);
+  })();
 })();
 </script>
 </body>

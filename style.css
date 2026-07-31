@@ -133,16 +133,18 @@
 
   /* ===== BARRA DE PESQUISA ELEGANTE ===== */
   .nav-search-btn{
-    display:inline-flex;align-items:center;gap:7px;
+    display:inline-flex;align-items:center;gap:8px;
     background:rgba(245,237,224,.12);
     border:1px solid rgba(245,237,224,.3);
     border-radius:30px;
-    padding:7px 26px;
+    padding:7px 20px;
+    min-width:240px;
+    justify-content:flex-start;
     color:var(--creme);
     font-family:var(--font-body);
     font-size:11px;
     font-weight:500;
-    letter-spacing:.14em;
+    letter-spacing:.1em;
     text-transform:uppercase;
     cursor:pointer;
     backdrop-filter:blur(8px);

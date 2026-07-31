@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar peças — Essência da Serra</title>
+  <meta name="description" content="Busque no acervo da Essência da Serra por peça, cor, técnica ou artesão. Moda artesanal da Serra da Capivara.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="busca.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="nav scrolled" id="nav" data-od-id="navbar">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand" aria-label="Essência da Serra — início"><img src="img/LOGO---ESSENCIA-DE-SERRA.png" alt="Essência da Serra" /></a>
+    <div class="nav-links">
+      <a href="index.html#colecoes">Coleções</a>
+      <a href="busca.html?cat=Vestu%C3%A1rio">Vestuário</a>
+      <a href="busca.html?cat=Bolsas">Bolsas</a>
+      <a href="busca.html?cat=Acess%C3%B3rios">Acessórios</a>
+      <a href="index.html#territorio">Sobre</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Drawer mobile -->
+<div class="drawer" id="drawer">
+  <a href="index.html#colecoes" data-close>Coleções</a>
+  <a href="busca.html?cat=Vestu%C3%A1rio" data-close>Vestuário</a>
+  <a href="busca.html?cat=Bolsas" data-close>Bolsas</a>
+  <a href="busca.html?cat=Acess%C3%B3rios" data-close>Acessórios</a>
+  <a href="index.html#artesas" data-close>Artesãs</a>
+  <a href="index.html#territorio" data-close>Sobre</a>
+</div>
+
+<main class="busca-page">
+  <div class="wrap">
+
+    <header class="busca-head">
+      <p class="eyebrow">O acervo</p>
+      <h1 id="buscaTitulo">Buscar peças</h1>
+      <p class="busca-sub">Procure por peça, cor, técnica ou pelo nome de quem fez — <em>vestido marrom</em>, <em>brinco de prata</em>, <em>crochê verde</em>, <em>Kívia</em>.</p>
+
+      <form class="busca-form" id="buscaForm" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="buscaInput" name="q" placeholder="O que você procura?" autocomplete="off" aria-label="Buscar peças no acervo">
+        <button type="submit">Buscar</button>
+      </form>
+
+      <div class="busca-sugestoes">
+        <span class="busca-sug-label">Sugestões:</span>
+        <button type="button" class="busca-sug">vestido marrom</button>
+        <button type="button" class="busca-sug">crochê</button>
+        <button type="button" class="busca-sug">macramê</button>
+        <button type="button" class="busca-sug">camisa bordada</button>
+        <button type="button" class="busca-sug">bolsa</button>
+        <button type="button" class="busca-sug">brinco</button>
+        <button type="button" class="busca-sug">richelieu</button>
+      </div>
+    </header>
+
+    <div class="busca-layout">
+      <button type="button" class="filtros-toggle" id="filtrosToggle" aria-expanded="false">
+        <span>Filtrar</span>
+        <span id="filtrosToggleIco">+</span>
+      </button>
+
+      <aside class="busca-filtros" id="buscaFiltros" aria-label="Filtros"></aside>
+
+      <section class="busca-resultados">
+        <div class="busca-bar">
+          <p class="busca-contagem" id="buscaContagem"></p>
+          <div class="busca-ordem">
+            <label for="buscaOrdem">Ordenar</label>
+            <select id="buscaOrdem">
+              <option value="relevancia">Acervo</option>
+              <option value="nome">Nome (A–Z)</option>
+              <option value="fotos">Mais fotos</option>
+              <option value="artesao">Artesão (A–Z)</option>
+            </select>
+          </div>
+        </div>
+        <div id="buscaGrid"></div>
+      </section>
+    </div>
+
+  </div>
+</main>
+
+<!-- ===== RODAPÉ ===== -->
+<footer class="footer" id="rodape" data-od-id="rodape">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="foot-col brand">
+        <img class="foot-logo" src="img/LOGO---ESSENCIA-DE-SERRA.png" alt="Essência da Serra" />
+        <p class="brand-desc">Moda autoral inspirada na Serra da Capivara. Criamos peças que carregam a história, a arte rupestre e a identidade do sertão do Piauí.</p>
+        <div class="foot-socials">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://wa.me/5586999999999" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+      <div class="foot-col links">
+        <h4>Navegação</h4>
+        <div class="foot-nav-links">
+          <a href="index.html#colecoes">Coleções</a>
+          <a href="busca.html">O Acervo</a>
+          <a href="index.html#artesas">As Artesãs</a>
+          <a href="index.html#idealizadora">A Idealizadora</a>
+          <a href="index.html#territorio">Nossa História</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Essência da Serra. Todos os direitos reservados.</p>
+      <p>Feito à mão no Piauí, Brasil.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="catalogo.js"></script>
+<script>
+(function(){
+
+  /* Facetas na ordem em que aparecem na coluna de filtros.
+     `param` é a chave usada na URL, para o resultado ser compartilhável. */
+  var FACETAS = [
+    { param:'cat',  campo:'categoria', titulo:'Categoria' },
+    { param:'tipo', campo:'tipo',      titulo:'Tipo de peça' },
+    { param:'cor',  campo:'cor',       titulo:'Cor' },
+    { param:'tec',  campo:'tecnica',   titulo:'Técnica' },
+    { param:'art',  campo:'artesaos',  titulo:'Artesão' }
+  ];
+
+  var estado = { q:'', ordem:'relevancia', filtros:{} };
+
+  var input     = document.getElementById('buscaInput');
+  var form      = document.getElementById('buscaForm');
+  var grid      = document.getElementById('buscaGrid');
+  var elFiltros = document.getElementById('buscaFiltros');
+  var elContagem= document.getElementById('buscaContagem');
+  var elOrdem   = document.getElementById('buscaOrdem');
+  var elTitulo  = document.getElementById('buscaTitulo');
+
+  function url(p){
+    return encodeURI(p)
+      .replace(/'/g,'%27').replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/&/g,'%26');
+  }
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function nomeArtesao(id){
+    var a = ARTESAOS.filter(function(x){ return x.id === id; })[0];
+    return a ? a.nome : id;
+  }
+
+  /* ----- URL <-> estado ----------------------------------------------- */
+
+  function lerURL(){
+    var p = new URLSearchParams(location.search);
+    estado.q = p.get('q') || '';
+    estado.ordem = p.get('ord') || 'relevancia';
+    estado.filtros = {};
+    FACETAS.forEach(function(f){
+      var v = p.get(f.param);
+      /* Vários valores da mesma faceta vêm separados por "~". */
+      estado.filtros[f.param] = v ? v.split('~').filter(Boolean) : [];
+    });
+  }
+
+  function escreverURL(){
+    var p = new URLSearchParams();
+    if(estado.q) p.set('q', estado.q);
+    FACETAS.forEach(function(f){
+      var v = estado.filtros[f.param];
+      if(v && v.length) p.set(f.param, v.join('~'));
+    });
+    if(estado.ordem !== 'relevancia') p.set('ord', estado.ordem);
+    var qs = p.toString();
+    history.replaceState(null, '', qs ? '?' + qs : location.pathname);
+  }
+
+  /* ----- Filtragem ----------------------------------------------------- */
+
+  /* Valores de uma peça para uma faceta (artesaos é lista, o resto é escalar). */
+  function valores(produto, campo){
+    var v = produto[campo];
+    return Array.isArray(v) ? v : [v];
+  }
+
+  /* Aplica a busca textual e todas as facetas, exceto (opcionalmente) uma.
+     Ignorar a própria faceta é o que permite mostrar a contagem de cada
+     opção sem que ela zere as alternativas do mesmo grupo. */
+  function filtrar(exceto){
+    var base = estado.q ? buscarProdutos(estado.q) : PRODUTOS.slice();
+    return base.filter(function(p){
+      return FACETAS.every(function(f){
+        if(f.param === exceto) return true;
+        var sel = estado.filtros[f.param];
+        if(!sel || !sel.length) return true;
+        var vals = valores(p, f.campo);
+        return sel.some(function(s){ return vals.indexOf(s) !== -1; });
+      });
+    });
+  }
+
+  function ordenar(lista){
+    var l = lista.slice();
+    if(estado.ordem === 'nome')    l.sort(function(a,b){ return a.nome.localeCompare(b.nome,'pt-BR'); });
+    if(estado.ordem === 'fotos')   l.sort(function(a,b){ return b.galeria.length - a.galeria.length; });
+    if(estado.ordem === 'artesao') l.sort(function(a,b){ return a.artesaosNomes[0].localeCompare(b.artesaosNomes[0],'pt-BR'); });
+    return l;
+  }
+
+  /* ----- Renderização -------------------------------------------------- */
+
+  function renderFiltros(){
+    var html = '';
+    var ativos = FACETAS.reduce(function(n,f){ return n + estado.filtros[f.param].length; }, 0);
+
+    html += '<button type="button" class="filtro-limpar" id="filtroLimpar"' +
+            (ativos ? '' : ' hidden') + '>&times; Limpar filtros (' + ativos + ')</button>';
+
+    FACETAS.forEach(function(f){
+      /* Contagem calculada ignorando a própria faceta. */
+      var universo = filtrar(f.param);
+      var contagem = {};
+      universo.forEach(function(p){
+        valores(p, f.campo).forEach(function(v){ contagem[v] = (contagem[v] || 0) + 1; });
+      });
+
+      var opcoes = Object.keys(contagem).sort(function(a,b){
+        var d = contagem[b] - contagem[a];
+        return d !== 0 ? d : String(a).localeCompare(String(b), 'pt-BR');
+      });
+      if(!opcoes.length) return;
+
+      html += '<div class="filtro-grupo"><p class="filtro-titulo">' + f.titulo + '</p><div class="filtro-opcoes">';
+      opcoes.forEach(function(v){
+        var on = estado.filtros[f.param].indexOf(v) !== -1;
+        var rotulo = f.campo === 'artesaos' ? nomeArtesao(v) : v;
+        html += '<button type="button" class="filtro-chip" aria-pressed="' + on + '"' +
+                ' data-faceta="' + f.param + '" data-valor="' + esc(v) + '">' +
+                esc(rotulo) + '<span class="n">' + contagem[v] + '</span></button>';
+      });
+      html += '</div></div>';
+    });
+
+    elFiltros.innerHTML = html;
+  }
+
+  function cardProduto(p){
+    return '<a class="res-card" href="produto.html?id=' + p.id + '">' +
+             '<div class="res-thumb">' +
+               '<img src="' + fotoCard(p.capa) + '" alt="' + esc(p.nome) + '" loading="lazy">' +
+               '<span class="res-tecnica">' + esc(p.tecnica) + '</span>' +
+               '<span class="res-qtd">' + p.galeria.length + (p.galeria.length === 1 ? ' foto' : ' fotos') + '</span>' +
+             '</div>' +
+             '<div class="res-info">' +
+               '<span class="res-tag">' + esc(p.tipo + ' · ' + p.cor) + '</span>' +
+               '<h3 class="res-nome">' + esc(p.nome) + '</h3>' +
+               '<span class="res-autor">' + esc(p.artesaosNomes.join(' & ')) + '</span>' +
+             '</div>' +
+           '</a>';
+  }
+
+  function render(){
+    var achados = ordenar(filtrar());
+
+    elTitulo.textContent = estado.q ? '“' + estado.q + '”' : 'Buscar peças';
+    document.title = (estado.q ? estado.q + ' — busca' : 'Buscar peças') + ' — Essência da Serra';
+
+    elContagem.innerHTML = achados.length
+      ? '<strong>' + achados.length + '</strong> ' + (achados.length === 1 ? 'peça encontrada' : 'peças encontradas') +
+        ' de ' + PRODUTOS.length + ' no acervo'
+      : 'Nenhuma peça encontrada';
+
+    grid.innerHTML = achados.length
+      ? '<div class="res-grid">' + achados.map(cardProduto).join('') + '</div>'
+      : '<div class="res-vazio">' +
+          '<h3>Nada encontrado' + (estado.q ? ' para “' + esc(estado.q) + '”' : '') + '</h3>' +
+          '<p>Tente outro termo ou remova alguns filtros. Você pode buscar por tipo de peça, cor, técnica ou pelo nome do artesão.</p>' +
+          '<button type="button" class="busca-sug" id="vazioLimpar">Ver o acervo inteiro</button>' +
+        '</div>';
+
+    renderFiltros();
+    escreverURL();
+  }
+
+  /* ----- Eventos ------------------------------------------------------- */
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    estado.q = input.value.trim();
+    render();
+  });
+
+  /* Campo de busca nativo: o "x" do type=search dispara 'search' com valor vazio. */
+  input.addEventListener('search', function(){
+    estado.q = input.value.trim();
+    render();
+  });
+
+  elOrdem.addEventListener('change', function(){
+    estado.ordem = elOrdem.value;
+    render();
+  });
+
+  elFiltros.addEventListener('click', function(e){
+    var chip = e.target.closest('.filtro-chip');
+    if(chip){
+      var f = chip.getAttribute('data-faceta');
+      var v = chip.getAttribute('data-valor');
+      var sel = estado.filtros[f];
+      var i = sel.indexOf(v);
+      if(i === -1) sel.push(v); else sel.splice(i, 1);
+      render();
+      return;
+    }
+    if(e.target.closest('#filtroLimpar')){
+      FACETAS.forEach(function(f){ estado.filtros[f.param] = []; });
+      render();
+    }
+  });
+
+  grid.addEventListener('click', function(e){
+    if(e.target.closest('#vazioLimpar')){
+      estado.q = '';
+      input.value = '';
+      FACETAS.forEach(function(f){ estado.filtros[f.param] = []; });
+      render();
+    }
+  });
+
+  document.querySelectorAll('.busca-sug').forEach(function(b){
+    b.addEventListener('click', function(){
+      estado.q = b.textContent.trim();
+      input.value = estado.q;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  /* Filtros recolhidos no mobile */
+  var fToggle = document.getElementById('filtrosToggle');
+  var fIco = document.getElementById('filtrosToggleIco');
+  function ehMobile(){ return window.matchMedia('(max-width:900px)').matches; }
+  function aplicarModoFiltros(){
+    if(ehMobile()){
+      var aberto = fToggle.getAttribute('aria-expanded') === 'true';
+      elFiltros.hidden = !aberto;
+    } else {
+      elFiltros.hidden = false;
+    }
+  }
+  fToggle.addEventListener('click', function(){
+    var aberto = fToggle.getAttribute('aria-expanded') === 'true';
+    fToggle.setAttribute('aria-expanded', String(!aberto));
+    fIco.textContent = aberto ? '+' : '−';
+    aplicarModoFiltros();
+  });
+  window.addEventListener('resize', aplicarModoFiltros);
+
+  /* Menu mobile */
+  var toggle = document.getElementById('navToggle');
+  var drawer = document.getElementById('drawer');
+  if(toggle && drawer){
+    toggle.addEventListener('click', function(){
+      var open = document.body.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    drawer.querySelectorAll('[data-close]').forEach(function(a){
+      a.addEventListener('click', function(){
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+
+  /* Voltar/avançar do navegador refaz a busca. */
+  window.addEventListener('popstate', function(){
+    lerURL();
+    input.value = estado.q;
+    elOrdem.value = estado.ordem;
+    render();
+  });
+
+  /* ----- Início --------------------------------------------------------- */
+  lerURL();
+  input.value = estado.q;
+  elOrdem.value = estado.ordem;
+  aplicarModoFiltros();
+  render();
+
+})();
+</script>
+</body>
+</html>

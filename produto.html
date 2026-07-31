@@ -21,9 +21,9 @@
     <a href="index.html" class="nav-brand" aria-label="Essência da Serra — início"><img src="img/LOGO---ESSENCIA-DE-SERRA.png" alt="Essência da Serra" /></a>
     <div class="nav-links">
       <a href="index.html#colecoes">Coleções</a>
-      <a href="index.html#categorias">Vestuário</a>
-      <a href="index.html#categorias">Bolsas</a>
-      <a href="index.html#categorias">Acessórios</a>
+      <a href="busca.html?cat=Vestu%C3%A1rio">Vestuário</a>
+      <a href="busca.html?cat=Bolsas">Bolsas</a>
+      <a href="busca.html?cat=Acess%C3%B3rios">Acessórios</a>
       <a href="index.html#territorio">Sobre</a>
       <button class="nav-search-btn" id="openSearchBtn" aria-label="Buscar no acervo">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -38,15 +38,15 @@
 <div class="drawer" id="drawer">
   <button class="drawer-search-btn" id="drawerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Buscar no acervo</button>
   <a href="index.html#colecoes" data-close>Coleções</a>
-  <a href="index.html#categorias" data-close>Vestuário</a>
-  <a href="index.html#categorias" data-close>Acessórios</a>
+  <a href="busca.html?cat=Vestu%C3%A1rio" data-close>Vestuário</a>
+  <a href="busca.html?cat=Acess%C3%B3rios" data-close>Acessórios</a>
   <a href="index.html#territorio" data-close>Sobre</a>
 </div>
 
 <!-- Conteúdo da Página de Detalhe -->
 <main class="product-page-wrap">
   <!-- Botão Voltar -->
-  <a href="index.html#categorias" class="back-btn zoom-area">
+  <a href="busca.html" class="back-btn zoom-area">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
     Voltar ao Acervo
   </a>
@@ -68,7 +68,7 @@
       <h1 class="p-title" id="pTitle"></h1>
       <div class="p-price-block">
         <span class="p-price" id="pPrice">Peças sob encomenda</span>
-        <p class="p-price-details" id="pPriceDetails" style="font-size:14px;color:var(--tinta-70);margin-top:10px;line-height:1.5">Cada criação pode ser personalizada de acordo com seu estilo e necessidade. Solicite um orçamento diretamente com o artesão de sua preferência e tenha uma peça exclusiva, feita especialmente para você.</p>
+        <p class="p-price-details" id="pPriceDetails" style="display:none"></p>
       </div>
 
       <p class="p-desc" id="pDesc"></p>
@@ -109,7 +109,7 @@
         <h4>Navegação</h4>
         <div class="foot-nav-links">
           <a href="index.html#colecoes">Coleções</a>
-          <a href="index.html#categorias">O Acervo</a>
+          <a href="busca.html">O Acervo</a>
           <a href="index.html#territorio">Nossa História</a>
           <a href="#">Atacado & Parcerias</a>
         </div>
@@ -122,6 +122,29 @@
   </div>
 </footer>
 
+<!-- ===== VISOR DE FOTOS (tela cheia + zoom) ===== -->
+<div class="visor" id="visor" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Fotos da peça">
+  <div class="visor-topo">
+    <p class="visor-legenda"><strong id="visorNome"></strong> <span id="visorPos"></span></p>
+    <div class="visor-acoes">
+      <button type="button" class="visor-btn" id="visorMenos" aria-label="Diminuir zoom">&minus;</button>
+      <span class="visor-nivel" id="visorNivel">100%</span>
+      <button type="button" class="visor-btn" id="visorMais" aria-label="Aumentar zoom">+</button>
+      <button type="button" class="visor-btn fechar" id="visorFechar" aria-label="Fechar">&times;</button>
+    </div>
+  </div>
+
+  <div class="visor-palco" id="visorPalco">
+    <button type="button" class="visor-seta prev" id="visorPrev" aria-label="Foto anterior">&#10216;</button>
+    <img class="visor-img" id="visorImg" src="" alt="" draggable="false">
+    <button type="button" class="visor-seta next" id="visorNext" aria-label="Próxima foto">&#10217;</button>
+  </div>
+
+  <div class="visor-tiras" id="visorTiras"></div>
+  <p class="visor-dica">Clique na foto para ampliar · role para dar zoom · arraste para mover · setas trocam de foto · Esc fecha</p>
+</div>
+
+<script src="catalogo.js"></script>
 <script>
 (function(){
   /* ---- Banco de Dados de Produtos ---- */
@@ -192,10 +215,45 @@
     }
   };
 
-  /* ---- Inicialização por parâmetro URL ---- */
+  /* ---- Inicialização por parâmetro URL ----
+     Resolve primeiro no catálogo real (catalogo.js); os ids "cat-*" antigos
+     continuam atendidos por productsDb. Sem isso, um id do catálogo cairia
+     silenciosamente no vestido de crochê. */
+  function urlFoto(p){
+    return encodeURI(p)
+      .replace(/'/g,'%27').replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/&/g,'%26');
+  }
+
+  /* Converte uma peça do catálogo para o formato que esta página já usa. */
+  function doCatalogo(p){
+    var autores = p.artesaosNomes.join(' & ');
+    return {
+      name: p.nome,
+      collection: 'Coleção Serra Rupestre · ' + p.tecnica,
+      price: '',
+      desc: p.nome + '. Peça artesanal em ' + p.tecnica + ', na cor ' + p.cor +
+            ', feita à mão por ' + autores + ' em Coronel José Dias, aos pés da ' +
+            'Serra da Capivara. Cada peça é única: pequenas variações de ponto, ' +
+            'traço e tom são a assinatura de quem a produziu.',
+      images: p.galeria.map(fotoFull),
+      thumbs: p.galeria.map(fotoCard),
+      waText: 'Olá! Gostei muito da peça "' + p.nome + '" (' + autores + ') e gostaria de saber como encomendar.',
+      autores: autores,
+      doCatalogo: true
+    };
+  }
+
   var params = new URLSearchParams(window.location.search);
-  var activeId = params.get('id') || 'cat-crochet';
-  var prod = productsDb[activeId] || productsDb['cat-crochet'];
+  var activeId = params.get('id') || '';
+  var doCat = (typeof PRODUTOS !== 'undefined')
+    ? PRODUTOS.filter(function(p){ return p.id === activeId; })[0]
+    : null;
+
+  var prod;
+  if(doCat)                       prod = doCatalogo(doCat);
+  else if(productsDb[activeId])   prod = productsDb[activeId];
+  else if(typeof PRODUTOS !== 'undefined' && PRODUTOS.length) prod = doCatalogo(PRODUTOS[0]);
+  else                            prod = productsDb['cat-crochet'];
 
   var currentImages = prod.images;
   var currentImgIdx = 0;
@@ -213,16 +271,32 @@
   // Preenche dados principais
   pTitle.textContent = prod.name;
   pCollTag.textContent = prod.collection;
-  pPrice.textContent = prod.price;
   pDesc.textContent = prod.desc;
   document.title = prod.name + " — Essência da Serra";
 
+  /* Peças do catálogo não têm preço cadastrado: mantém "Peças sob encomenda"
+     que já está no HTML em vez de esvaziar o bloco. */
+  if(prod.price) pPrice.textContent = prod.price;
+
+  /* Assinatura de quem fez, logo abaixo do título. */
+  if(prod.autores){
+    var credito = document.createElement('p');
+    credito.className = 'p-autores';
+    credito.style.cssText = 'font-size:13px;letter-spacing:.06em;color:var(--terracota);font-weight:600;margin-top:8px';
+    credito.textContent = 'Feito à mão por ' + prod.autores;
+    pTitle.insertAdjacentElement('afterend', credito);
+  }
+
   // Cálculos dinâmicos de parcelamento e desconto Pix
-  var cleanPrice = parseFloat(prod.price.replace(/[^\d]/g, ''));
+  var cleanPrice = parseFloat((prod.price || '').replace(/[^\d]/g, ''));
   if(!isNaN(cleanPrice)) {
     var pixVal = Math.floor(cleanPrice * 0.9);
     var installmentVal = (cleanPrice / 3).toFixed(2).replace('.', ',');
-    document.getElementById('pPriceDetails').innerHTML = "ou <strong>R$ " + pixVal + " no Pix</strong> (10% de desconto) / ou em até 3x de R$ " + installmentVal + " sem juros no cartão";
+    var pd = document.getElementById('pPriceDetails');
+    if(pd){
+      pd.style.display = 'block';
+      pd.innerHTML = "ou <strong>R$ " + pixVal + " no Pix</strong> (10% de desconto) / ou em até 3x de R$ " + installmentVal + " sem juros no cartão";
+    }
   }
 
   var phoneNumber = "5586999999999";
@@ -233,10 +307,12 @@
     pMainImg.alt = prod.name;
     
     pThumbs.innerHTML = "";
+    /* miniaturas usam a redução leve; a foto grande fica só na principal */
+    var mini = prod.thumbs || currentImages;
     currentImages.forEach(function(img, idx) {
       var thumb = document.createElement('div');
       thumb.className = "p-thumb" + (idx === currentImgIdx ? " active" : "");
-      thumb.style.backgroundImage = "url(" + img + ")";
+      thumb.style.backgroundImage = "url('" + (mini[idx] || img) + "')";
       thumb.addEventListener('click', function() {
         currentImgIdx = idx;
         updateGallery();
@@ -246,6 +322,190 @@
   }
 
   updateGallery();
+
+  /* ==================================================================
+     VISOR DE FOTOS — tela cheia com zoom e arraste
+     ================================================================== */
+  (function visorDeFotos(){
+    var visor  = document.getElementById('visor');
+    if(!visor) return;
+
+    var palco  = document.getElementById('visorPalco');
+    var img    = document.getElementById('visorImg');
+    var tiras  = document.getElementById('visorTiras');
+    var elNome = document.getElementById('visorNome');
+    var elPos  = document.getElementById('visorPos');
+    var elNivel= document.getElementById('visorNivel');
+    var btPrev = document.getElementById('visorPrev');
+    var btNext = document.getElementById('visorNext');
+    var btMais = document.getElementById('visorMais');
+    var btMenos= document.getElementById('visorMenos');
+    var btFecha= document.getElementById('visorFechar');
+
+    var MIN = 1, MAX = 5, PASSO = 0.5;
+    var i = 0, escala = 1, x = 0, y = 0;
+    var arrastando = false, arrastou = false, px = 0, py = 0;
+
+    function aplicar(){
+      img.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + escala + ')';
+      elNivel.textContent = Math.round(escala * 100) + '%';
+      palco.classList.toggle('ampliado', escala > 1);
+      img.style.cursor = escala > 1 ? '' : 'zoom-in';
+      btMenos.disabled = escala <= MIN;
+      btMais.disabled  = escala >= MAX;
+    }
+
+    /* Mantém a imagem dentro do palco quando ampliada, para não "fugir". */
+    function limitar(){
+      if(escala <= 1){ x = 0; y = 0; return; }
+      var p = palco.getBoundingClientRect();
+      var largura = img.clientWidth  * escala;
+      var altura  = img.clientHeight * escala;
+      /* a imagem está centrada; o excedente de cada lado é o quanto pode mover */
+      var folgaX = Math.max(0, (largura - p.width)  / 2);
+      var folgaY = Math.max(0, (altura  - p.height) / 2);
+      x = Math.min(folgaX, Math.max(-folgaX, x));
+      y = Math.min(folgaY, Math.max(-folgaY, y));
+    }
+
+    function zoom(novo, ancoraX, ancoraY){
+      novo = Math.min(MAX, Math.max(MIN, novo));
+      if(novo === escala) return;
+      if(typeof ancoraX === 'number'){
+        /* mantém o ponto sob o cursor parado ao ampliar */
+        var p = palco.getBoundingClientRect();
+        var cx = ancoraX - p.left - p.width / 2;
+        var cy = ancoraY - p.top  - p.height / 2;
+        var fator = novo / escala;
+        x = cx - (cx - x) * fator;
+        y = cy - (cy - y) * fator;
+      }
+      escala = novo;
+      limitar();
+      aplicar();
+    }
+
+    function resetarZoom(){ escala = 1; x = 0; y = 0; aplicar(); }
+
+    function mostrar(novo){
+      i = (novo + currentImages.length) % currentImages.length;
+      img.src = currentImages[i];
+      img.alt = prod.name + ' — foto ' + (i + 1) + ' de ' + currentImages.length;
+      elPos.textContent = (i + 1) + '/' + currentImages.length;
+      resetarZoom();
+      tiras.querySelectorAll('.visor-tira').forEach(function(t, k){
+        t.classList.toggle('active', k === i);
+      });
+      var uma = currentImages.length < 2;
+      btPrev.hidden = uma;
+      btNext.hidden = uma;
+    }
+
+    function montarTiras(){
+      var mini = prod.thumbs || currentImages;
+      tiras.innerHTML = '';
+      currentImages.forEach(function(src, k){
+        var t = document.createElement('div');
+        t.className = 'visor-tira';
+        t.style.backgroundImage = "url('" + (mini[k] || src) + "')";
+        t.addEventListener('click', function(){ mostrar(k); });
+        tiras.appendChild(t);
+      });
+    }
+
+    function abrir(indice){
+      elNome.textContent = prod.name;
+      if(!tiras.children.length) montarTiras();
+      mostrar(typeof indice === 'number' ? indice : currentImgIdx);
+      visor.classList.add('open');
+      visor.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      btFecha.focus();
+    }
+
+    function fechar(){
+      visor.classList.remove('open');
+      visor.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      /* deixa a página na mesma foto que estava sendo vista */
+      if(i !== currentImgIdx){ currentImgIdx = i; updateGallery(); }
+    }
+
+    /* --- abrir --- */
+    pMainImg.addEventListener('click', function(){ abrir(currentImgIdx); });
+    pMainImg.setAttribute('tabindex', '0');
+    pMainImg.setAttribute('role', 'button');
+    pMainImg.setAttribute('title', 'Clique para ampliar');
+    pMainImg.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); abrir(currentImgIdx); }
+    });
+
+    /* --- fechar --- */
+    btFecha.addEventListener('click', fechar);
+    palco.addEventListener('click', function(e){ if(e.target === palco) fechar(); });
+
+    /* --- navegar --- */
+    btPrev.addEventListener('click', function(e){ e.stopPropagation(); mostrar(i - 1); });
+    btNext.addEventListener('click', function(e){ e.stopPropagation(); mostrar(i + 1); });
+
+    /* --- zoom pelos botões --- */
+    btMais.addEventListener('click', function(){ zoom(escala + PASSO); });
+    btMenos.addEventListener('click', function(){ zoom(escala - PASSO); });
+
+    /* --- clique na foto alterna entre 100% e 250% no ponto clicado --- */
+    img.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(arrastou) return;             /* não conta como clique depois de arrastar */
+      if(escala > 1) resetarZoom();
+      else zoom(2.5, e.clientX, e.clientY);
+    });
+
+    /* --- roda do mouse dá zoom --- */
+    palco.addEventListener('wheel', function(e){
+      e.preventDefault();
+      zoom(escala + (e.deltaY < 0 ? PASSO : -PASSO), e.clientX, e.clientY);
+    }, { passive: false });
+
+    /* --- arraste para mover quando ampliado --- */
+    img.addEventListener('pointerdown', function(e){
+      if(escala <= 1) return;
+      arrastando = true; arrastou = false;
+      px = e.clientX; py = e.clientY;
+      palco.classList.add('arrastando');
+      img.setPointerCapture(e.pointerId);
+    });
+    img.addEventListener('pointermove', function(e){
+      if(!arrastando) return;
+      var dx = e.clientX - px, dy = e.clientY - py;
+      if(Math.abs(dx) + Math.abs(dy) > 3) arrastou = true;
+      x += dx; y += dy; px = e.clientX; py = e.clientY;
+      limitar();
+      img.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + escala + ')';
+    });
+    function fimArraste(){
+      if(!arrastando) return;
+      arrastando = false;
+      palco.classList.remove('arrastando');
+      setTimeout(function(){ arrastou = false; }, 0);
+    }
+    img.addEventListener('pointerup', fimArraste);
+    img.addEventListener('pointercancel', fimArraste);
+
+    /* --- teclado --- */
+    document.addEventListener('keydown', function(e){
+      if(!visor.classList.contains('open')) return;
+      if(e.key === 'Escape'){ fechar(); }
+      else if(e.key === 'ArrowRight'){ mostrar(i + 1); }
+      else if(e.key === 'ArrowLeft'){ mostrar(i - 1); }
+      else if(e.key === '+' || e.key === '='){ zoom(escala + PASSO); }
+      else if(e.key === '-'){ zoom(escala - PASSO); }
+      else if(e.key === '0'){ resetarZoom(); }
+    });
+
+    window.addEventListener('resize', function(){
+      if(visor.classList.contains('open')){ limitar(); aplicar(); }
+    });
+  })();
 
   if(pPrev) pPrev.addEventListener('click', function() {
     currentImgIdx = (currentImgIdx - 1 + currentImages.length) % currentImages.length;
@@ -258,34 +518,33 @@
 
   /* ---- Renderiza a Seção "Explore Outras Peças" ---- */
   var moreGrid = document.getElementById('moreGrid');
-  if(moreGrid){
-    var count = 0;
-    for(var key in productsDb){
-      if(key === activeId) continue; // Exclui a peça atual
-      if(count >= 4) break; // Mostra no máximo 4
-      
-      var p = productsDb[key];
+  if(moreGrid && typeof PRODUTOS !== 'undefined'){
+    /* Relacionadas: primeiro quem compartilha artesão, depois a mesma técnica. */
+    var atual = doCat || PRODUTOS[0];
+    var outras = PRODUTOS.filter(function(p){ return p.id !== atual.id; });
+    outras.sort(function(a, b){
+      function nota(p){
+        var mesmoArtesao = p.artesaos.some(function(id){ return atual.artesaos.indexOf(id) !== -1; });
+        return (mesmoArtesao ? 2 : 0) + (p.tecnica === atual.tecnica ? 1 : 0);
+      }
+      return nota(b) - nota(a);
+    });
+
+    outras.slice(0, 4).forEach(function(p){
       var card = document.createElement('a');
       card.className = "cat-card zoom-area";
-      card.href = "produto.html?id=" + key;
-      
-      // Imagem de fundo estilizada (usa a primeira foto do banco ou cinza se for placeholder)
-      var bgImg = p.images[0];
-      var styleStr = "background-image: url('" + bgImg + "'); background-size: cover; background-position: center;";
-      
-      card.innerHTML = 
+      card.href = "produto.html?id=" + p.id;
+      card.innerHTML =
         '<div class="cat-thumb">' +
-          '<div class="ph" style="' + styleStr + '"></div>' +
+          '<div class="ph" style="background-image: url(\'' + fotoCard(p.capa) + '\'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>' +
           '<span class="cat-btn">Ver detalhes</span>' +
         '</div>' +
         '<div class="cat-meta">' +
-          '<h3>' + p.name + '</h3>' +
-          '<p class="price">' + p.price + '</p>' +
+          '<h3>' + p.nome + '</h3>' +
+          '<p class="price">' + p.artesaosNomes.join(' & ') + '</p>' +
         '</div>';
-      
       moreGrid.appendChild(card);
-      count++;
-    }
+    });
   }
 
   /* ---- Cursor Customizado removido ---- */
@@ -306,17 +565,20 @@
   var nf = document.getElementById('newsForm');
   if(nf){ nf.addEventListener('submit', function(ev){ ev.preventDefault(); var em=document.getElementById('email').value; document.getElementById('newsMsg').textContent = em? 'Obrigada! Você entrou para a nossa lista.' : ''; nf.reset(); }); }
 
-  /* ---- Barra de Pesquisa Elegante & Modal ---- */
-  var catalogItems = [
-    { id: 'cat-crochet', title: 'Vestuário em crochê', cat: 'Vestuário', desc: 'Vestidos, blusas e saias manuais', price: 'R$ 490', img: 'img/product_vestido_1.png', keywords: 'croche crochê vestido vestidos saia saias blusa blusas vestuario vestuário artesanal' },
-    { id: 'cat-camisas', title: 'Camisas pintadas à mão', cat: 'Vestuário', desc: 'Algodão natural e arte rupestre', price: 'R$ 320', img: 'img/product_camisa_1.png', keywords: 'camisa camisas pintada mão rupestre algodao algodão pintura arte' },
-    { id: 'cat-bolsas', title: 'Bolsas em crochê e macramê', cat: 'Bolsas', desc: 'Fibras naturais e macramê', price: 'R$ 280', img: 'img/product_bolsa_1.png', keywords: 'bolsa bolsas croche crochê macrame macramê fibra fibras acessorio' },
-    { id: 'cat-bordado', title: 'Saídas e xales bordados', cat: 'Vestuário', desc: 'Bordado manual artesanal', price: 'R$ 410', img: 'img/product_vestido_1.png', keywords: 'saida saídas xale xales bordado bordados manual' },
-    { id: 'cat-biojoias', title: 'Colares e brincos em biojoias', cat: 'Acessórios', desc: 'Sementes, fibras e pedras locais', price: 'R$ 120', img: 'img/product_bolsa_1.png', keywords: 'biojoia biojoias colar colares brinco brincos semente sementes acessorio' },
-    { id: 'cat-cintos', title: 'Cintos em macramê', cat: 'Acessórios', desc: 'Trançado manual em fios de algodão', price: 'R$ 95', img: 'img/product_bolsa_1.png', keywords: 'cinto cintos macrame macramê trancado trançado acessorio' },
-    { id: 'cat-chapeus', title: 'Chapéus de palha trabalhados', cat: 'Acessórios', desc: 'Palha de carnaúba trançada', price: 'R$ 160', img: 'img/product_bolsa_1.png', keywords: 'chapeu chapéu chapéus palha carnauba carnaúba sol praia' },
-    { id: 'cat-carteiras', title: 'Carteiras e clutches em crochê', cat: 'Bolsas', desc: 'Peça única feita à mão', price: 'R$ 210', img: 'img/product_bolsa_1.png', keywords: 'carteira carteiras clutch clutches croche crochê bolsa bolsas' }
-  ];
+  /* ---- Barra de Pesquisa Elegante & Modal ----
+     Os dados vêm de catalogo.js; a lista completa e os filtros ficam em busca.html. */
+  var temCatalogo = typeof PRODUTOS !== 'undefined';
+
+  function url(p){
+    return encodeURI(p)
+      .replace(/'/g,'%27').replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/&/g,'%26');
+  }
+  function paginaBusca(q){
+    return 'busca.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+  }
+  function irParaBusca(q){
+    window.location.href = paginaBusca((q || '').trim());
+  }
 
   function openSearchModal(initialQuery){
     var overlay = document.getElementById('searchOverlay');
@@ -343,35 +605,35 @@
   function renderSearchResults(query){
     var resultsEl = document.getElementById('modalSearchResults');
     if(!resultsEl) return;
-    var q = (query || '').trim().toLowerCase();
-    if(!q){
+    var q = (query || '').trim();
+    if(!q || !temCatalogo){
       resultsEl.innerHTML = '<p class="search-empty-state">Digite algo ou escolha uma sugestão acima para buscar no acervo.</p>';
       return;
     }
-    var matches = catalogItems.filter(function(item){
-      return item.title.toLowerCase().indexOf(q) !== -1 ||
-             item.desc.toLowerCase().indexOf(q) !== -1 ||
-             item.cat.toLowerCase().indexOf(q) !== -1 ||
-             item.keywords.toLowerCase().indexOf(q) !== -1;
-    });
+
+    var matches = buscarProdutos(q);
 
     if(!matches.length){
-      resultsEl.innerHTML = '<p class="search-empty-state">Nenhum resultado encontrado para "<strong>' + escapeHtml(q) + '</strong>". Tente buscar por crochê, bolsas, vestidos ou macramê.</p>';
+      resultsEl.innerHTML = '<p class="search-empty-state">Nenhum resultado encontrado para "<strong>' + escapeHtml(q) + '</strong>". Tente buscar por crochê, vestido marrom, bolsas, brinco ou o nome de uma artesã.</p>';
       return;
     }
 
+    var previa = matches.slice(0, 6);
     var html = '<div class="search-results-grid">';
-    matches.forEach(function(item){
-      html += '<a href="produto.html?id=' + item.id + '" class="search-item-card" onclick="closeSearchModal()">' +
-                '<div class="search-item-thumb" style="background-image:url(\'' + item.img + '\')"></div>' +
+    previa.forEach(function(p){
+      html += '<a href="produto.html?id=' + p.id + '" class="search-item-card">' +
+                '<div class="search-item-thumb" style="background-image:url(\'' + fotoCard(p.capa) + '\')"></div>' +
                 '<div class="search-item-info">' +
-                  '<span class="search-item-cat">' + item.cat + '</span>' +
-                  '<h4 class="search-item-title">' + item.title + '</h4>' +
-                  '<span class="search-item-price">A partir de ' + item.price + '</span>' +
+                  '<span class="search-item-cat">' + escapeHtml(p.tipo + ' · ' + p.cor) + '</span>' +
+                  '<h4 class="search-item-title">' + escapeHtml(p.nome) + '</h4>' +
+                  '<span class="search-item-price">' + escapeHtml(p.artesaosNomes.join(' & ')) + '</span>' +
                 '</div>' +
               '</a>';
     });
     html += '</div>';
+    html += '<a class="search-ver-todos" href="' + paginaBusca(q) + '">' +
+              'Ver ' + (matches.length > previa.length ? 'todos os ' + matches.length + ' resultados' : 'na página de busca') +
+              ' &rarr;</a>';
     resultsEl.innerHTML = html;
   }
 
@@ -396,6 +658,9 @@
 
   if(modalInput){
     modalInput.addEventListener('input', function(){ renderSearchResults(this.value); });
+    modalInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); irParaBusca(this.value); }
+    });
   }
 
   tagBtns.forEach(function(btn){

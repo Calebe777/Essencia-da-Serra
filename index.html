@@ -158,7 +158,7 @@
     </div>
     <div class="hm-grid">
       <div class="hm-sticky">
-        <div class="frame ph" id="hmFrame" style="background-image: url('Art/Arilene/RAI_9732.jpg'); background-size: cover; background-position: center;"><span class="ph-lbl">Textura do crochê</span></div>
+        <div class="frame ph" id="hmFrame" style="background-image: url('001.png'); background-size: cover; background-position: center;"><span class="ph-lbl">01 — Crochê</span></div>
       </div>
       <div class="hm-text">
         <div class="hm-block" data-hm="0"><span class="num">01 — Crochê</span><h3>Ponto a ponto</h3><p>Cada trama é construída manualmente. Um vestido leva semanas de trabalho contínuo de uma única artesã, do fio à peça pronta.</p></div>
@@ -175,23 +175,46 @@
   <div class="wrap">
     <div class="artisans-head">
       <p class="eyebrow reveal">Nossas Mãos</p>
-      <h2 class="display reveal d1">As Artesãs da Serra</h2>
+      <h2 class="display reveal d1">Os Artesãos da Serra</h2>
       <p class="artisans-sub reveal d2">Cada peça da Essência da Serra traz a assinatura, a história e o saber ancestral dos nossos artesãos de Coronel José Dias.</p>
     </div>
 
     <div class="artisans-grid" id="artisansGrid"></div>
+    <div class="artisans-scroll-hint"><span>&larr; Deslize para ver todos os artesãos &rarr;</span></div>
   </div>
 </section>
 
-<!-- ===== MANIFESTO ===== -->
-<section class="manifesto pad" data-od-id="manifesto" style="color:#4A2B15">
+
+
+<!-- ===== O PROJETO ===== -->
+<section class="projeto pad" id="projeto" data-od-id="projeto">
   <div class="wrap">
-    <div style="max-width:560px;margin-left:0">
-      <p class="eyebrow reveal" style="color:#6B361A">Peças cheias de identidade</p>
-      <div style="margin-top:22px;display:flex;flex-direction:column;gap:18px">
-        <p class="reveal d1" style="font-size:clamp(16px,1.6vw,20px);line-height:1.6;color:#3D2213;font-weight:700">Aqui você encontra roupas, bolsas, acessórios e artigos artesanais 100% feitos à mão, produzidos com técnicas como crochê, macramê, rechilieu, pintura em tecido, bordado e outras expressões da arte manual que fazem parte da nossa cultura.</p>
-        <p class="reveal d2" style="font-size:clamp(15px,1.4vw,18px);line-height:1.6;color:#4A2B15;font-weight:600">Conheça a Coleção 2026, inspirada no Parque Nacional Serra da Capivara, nas pinturas rupestres, na caatinga e na riqueza cultural de Coronel José Dias, cidade que abriga a porta de entrada de um dos maiores patrimônios arqueológicos da humanidade.</p>
+    <div class="projeto-grid">
+
+      <div class="projeto-head">
+        <p class="eyebrow reveal">O projeto</p>
+        <h2 class="display reveal d1">Essência<br>da Serra</h2>
+        <div class="projeto-realizacao reveal d2">
+          <span class="projeto-realizacao-rot">Realização</span>
+          <img class="projeto-logo" src="img/logo-prefeitura-secretaria-mulher.png"
+               alt="Prefeitura Municipal de Coronel José Dias — Secretaria Municipal da Mulher"
+               loading="lazy">
+        </div>
       </div>
+
+      <div class="projeto-texto">
+        <p class="projeto-lead reveal d1">O Essência da Serra é um projeto da Prefeitura Municipal de Coronel José Dias, criado para valorizar o artesanato, a moda autoral e os talentos dos artesãos do município, transformando saberes tradicionais em peças exclusivas que representam a identidade da nossa terra.</p>
+
+        <p class="reveal d2">Aqui você encontra roupas, bolsas, acessórios e artigos artesanais 100% feitos à mão, produzidos com técnicas como crochê, macramê, rechilieu, pintura em tecido, bordado e outras expressões da arte manual que fazem parte da nossa cultura.</p>
+
+        <p class="reveal d3">Conheça a Coleção 2026, inspirada no Parque Nacional Serra da Capivara, nas pinturas rupestres, na caatinga e na riqueza cultural de Coronel José Dias, cidade que abriga a porta de entrada de um dos maiores patrimônios arqueológicos da humanidade.</p>
+
+        <div class="projeto-acoes reveal d4">
+          <a href="busca.html" class="projeto-link">Ver o acervo &rarr;</a>
+          <a href="#artesas" class="projeto-link vazado">Conhecer os artesãos</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -257,13 +280,21 @@
           <a href="https://wa.me/5586999999999" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
       </div>
+      <!-- Coluna Realização -->
+      <div class="foot-col apoios reveal d1">
+        <h4>Realização</h4>
+        <div class="foot-logos">
+          <img class="foot-logo-apoio" src="secretaria municipal da mulher.png" alt="Secretaria Municipal da Mulher - Coronel José Dias" />
+        </div>
+      </div>
       <!-- Coluna Quick Links -->
-      <div class="foot-col links reveal d1">
+      <div class="foot-col links reveal d2">
         <h4>Navegação</h4>
         <div class="foot-nav-links">
           <a href="#colecoes">Coleções</a>
+          <a href="#projeto">O Projeto</a>
           <a href="busca.html">O Acervo</a>
-          <a href="#artesas">As Artesãs</a>
+          <a href="#artesas">Os Artesãos</a>
           <a href="#idealizadora">A Idealizadora</a>
           <a href="#territorio">Nossa História</a>
         </div>
@@ -449,7 +480,7 @@
   /* ---- Grade "Peças que carregam território" ----
      Peças reais do catálogo. Renderizada antes do toggle abaixo, porque ele
      consulta os botões e os painéis uma única vez, no carregamento. */
-  (function renderCategorias(){
+  function renderCategorias(){
     var elToggle = document.getElementById('catsToggle');
     var elPanes  = document.getElementById('catsPanes');
     if(!elToggle || !elPanes || typeof PRODUTOS === 'undefined') return;
@@ -521,7 +552,13 @@
     }).join('');
 
     elPanes.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-  })();
+  }
+  renderCategorias();
+
+  /* Nome das peças pode ter sido editado no admin: quando os ajustes chegarem
+     da API, a vitrine é montada de novo com os nomes atuais. */
+  aoAtualizarCatalogo(renderCategorias);
+  carregarAjustes();
 
   /* ---- Toggle categorias ---- */
   var tbtns = document.querySelectorAll('.toggle button');
@@ -538,19 +575,22 @@
 
   /* ---- Feito à mão ---- */
   var frame = document.getElementById('hmFrame');
-  var hmVariants = ['linear-gradient(150deg,#7d5230,#4a2c15)','linear-gradient(150deg,#6b4429,#3f2613)','linear-gradient(150deg,#a4562b,#5a2413)','linear-gradient(150deg,#c79966,#7a3d1f)'];
-  var hmLabels = ['Textura do crochê','Nós do macramê','Pintura em tecido','Bordado & biojoias'];
+  var hmImages = ['001.png', '002.png', '003.png', '004.png'];
+  var hmLabels = ['01 — Crochê', '02 — Macramê', '03 — Pintura em tecido', '04 — Bordado & biojoias'];
   var hmBlocks = document.querySelectorAll('.hm-block');
   if(frame && hmBlocks.length){
     var hmIO = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting && e.intersectionRatio>0.5){
-          var i = parseInt(e.target.getAttribute('data-hm'),10);
-          frame.style.backgroundImage = hmVariants[i];
-          var lbl = frame.querySelector('.ph-lbl'); if(lbl) lbl.textContent = hmLabels[i];
+        if(e.isIntersecting){
+          var i = parseInt(e.target.getAttribute('data-hm'), 10);
+          if(!isNaN(i) && hmImages[i]){
+            frame.style.backgroundImage = 'url("' + hmImages[i] + '")';
+            var lbl = frame.querySelector('.ph-lbl');
+            if(lbl) lbl.textContent = hmLabels[i];
+          }
         }
       });
-    }, {threshold:[.5,.75]});
+    }, {threshold: 0.3});
     hmBlocks.forEach(function(b){ hmIO.observe(b); });
   }
 

@@ -104,12 +104,20 @@
           <a href="https://wa.me/5586999999999" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
       </div>
+      <!-- Coluna Realização -->
+      <div class="foot-col apoios">
+        <h4>Realização</h4>
+        <div class="foot-logos">
+          <img class="foot-logo-apoio" src="secretaria municipal da mulher.png" alt="Secretaria Municipal da Mulher - Coronel José Dias" />
+        </div>
+      </div>
       <div class="foot-col links">
         <h4>Navegação</h4>
         <div class="foot-nav-links">
           <a href="index.html#colecoes">Coleções</a>
+          <a href="index.html#projeto">O Projeto</a>
           <a href="busca.html">O Acervo</a>
-          <a href="index.html#artesas">As Artesãs</a>
+          <a href="index.html#artesas">Os Artesãos</a>
           <a href="index.html#idealizadora">A Idealizadora</a>
           <a href="index.html#territorio">Nossa História</a>
         </div>
@@ -396,6 +404,10 @@
   elOrdem.value = estado.ordem;
   aplicarModoFiltros();
   render();
+
+  /* Nomes editados no admin entram assim que a API responder. */
+  aoAtualizarCatalogo(render);
+  carregarAjustes();
 
 })();
 </script>

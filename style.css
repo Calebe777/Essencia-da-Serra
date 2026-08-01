@@ -376,13 +376,82 @@
   }
   @media (max-width: 768px){
     .manifesto .wrap{padding:0 20px}
-    .coll{height:auto;min-height:480px;padding:70px 20px}
-    .coll-inner{padding:0;max-width:100%}
-    .coll-inner h2{font-size:clamp(34px,9vw,64px)}
+    .coll {
+      position: relative;
+      width: 100%;
+      height: auto;
+      min-height: auto;
+      padding: 0 !important;
+      background: #F4E8D6 !important;
+      display: flex;
+      flex-direction: column;
+    }
+    .coll-media-mobile {
+      display: block;
+      width: 100%;
+    }
+    .coll-img-mobile {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .coll-inner {
+      position: relative;
+      z-index: 2;
+      opacity: 1;
+      max-width: 100%;
+      padding: 32px 24px 48px;
+      background: #F4E8D6;
+      box-sizing: border-box;
+    }
+    .coll-inner h2 { font-size: clamp(34px, 9vw, 54px); margin: 10px 0 14px; }
+    .coll-inner p { max-width: 100%; margin-bottom: 24px; font-size: 14px; line-height: 1.6; }
+    .coll-link { display: inline-flex; width: auto; height: auto; }
     .cats-head h2{font-size:clamp(32px,8vw,56px)}
     .hm-grid{grid-template-columns:1fr;gap:30px}
     .hm-sticky{position:relative;height:auto;top:auto}
     .hm-block{min-height:auto;padding:30px 0}
+
+    /* Carrossel de artesãs exclusivo para mobile */
+    .artisans {
+      overflow: hidden;
+    }
+    .artisans-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 14px !important;
+      padding: 10px 20px 24px !important;
+      margin: 0 -20px !important;
+      scrollbar-width: none;
+    }
+    .artisans-grid::-webkit-scrollbar {
+      display: none;
+    }
+    .artisan-card {
+      flex: 0 0 200px !important;
+      max-width: 200px !important;
+      scroll-snap-align: start;
+      border-radius: 10px;
+    }
+    .artisan-thumb {
+      aspect-ratio: 1 / 1;
+    }
+    .artisan-info {
+      padding: 12px 14px 16px;
+    }
+    .artisan-name {
+      font-size: 15px;
+    }
+    .artisan-bio {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .artisans-scroll-hint {
+      display: block;
+    }
   }
   .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;color:var(--creme);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.8}
   .scroll-cue .line{width:1px;height:46px;background:linear-gradient(var(--creme),transparent);position:relative;overflow:hidden}
@@ -473,9 +542,10 @@
   .cats-todas:hover{color:var(--terracota);gap:12px}
 
   /* ===== COLEÇÕES full-bleed ===== */
-  .coll{position:relative;height:min(94vh,820px);min-height:520px;overflow:hidden;display:flex;align-items:center;background: url('Background-Serra 2 - Expandido 1920x820 202.png') center/cover no-repeat !important;}
+  .coll{position:relative;height:min(94vh,820px);min-height:520px;overflow:hidden;display:flex;align-items:center;background: url('img/coll-serra-rupestre-desktop.jpg') center/cover no-repeat !important;}
   .coll-bg{display:none}
   .coll::before{display:none}
+  .coll-media-mobile{display:none}
   .coll-inner{position:relative;z-index:2;color:#3D2213;padding:0 clamp(20px,3.5vw,50px);max-width:560px}
   .coll-num{font-family:var(--font-body);font-size:13px;letter-spacing:.3em;color:#6B361A;font-weight:700}
   .coll-inner h2{font-family:'Times New Roman', Times, serif;font-style:italic;font-weight:700;font-size:clamp(44px,7.5vw,100px);margin:14px 0 18px;line-height:.94;color:#3D2213}
@@ -513,6 +583,16 @@
     color: var(--tinta-70);
     font-size: clamp(14px, 1.4vw, 17px);
     line-height: 1.55;
+  }
+  .artisans-scroll-hint {
+    display: none;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    margin-top: 14px;
+    font-weight: 600;
   }
   .artisans-grid {
     display: grid;
@@ -607,6 +687,19 @@
   }
 
   /* ===== TERRITÓRIO ===== */
+  /* Aquarela da Serra como fundo da seção Origem. É clara (luminosidade
+     média 218/255): o texto escuro da seção mantém contraste de 11,2:1,
+     então não precisa de véu por cima. */
+  .territory{
+    background:url('img/bg-serra-sem-pessoas.jpg') center/cover no-repeat;
+    background-color:#F7E3CE;   /* enquanto a imagem carrega */
+  }
+  /* Sobre a aquarela o terracota cai a 3,2:1 — abaixo do mínimo para texto.
+     O rupestre, da mesma família mas mais escuro, sobe para 5,5:1. */
+  .territory .eyebrow{color:var(--rupestre)}
+  .territory .map-path{stroke:var(--rupestre)}
+  .territory .pin,.territory .pin-pulse{fill:var(--rupestre)}
+  .territory .pin-pulse{stroke:var(--rupestre)}
   .territory .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
   .terr-text h2{font-size:clamp(34px,5vw,62px);margin:16px 0 22px}
   .terr-text p{color:var(--tinta-70);font-size:clamp(15px,1.5vw,18px);max-width:460px;margin-bottom:16px}
@@ -621,13 +714,105 @@
   @keyframes pulse{0%{transform:scale(.5);opacity:.9}70%,100%{transform:scale(3.5);opacity:0}}
   .pin-label{font-family:var(--font-body);font-size:9px;font-weight:700;fill:var(--tinta);letter-spacing:.02em}
   .pin-label-sub{font-family:var(--font-body);font-size:6.5px;font-weight:500;fill:var(--tinta-70);letter-spacing:.03em}
-  /* ===== A IDEALIZADORA ===== */
-  .founder{background:var(--creme-2)}
-  .founder .wrap{
-    display:grid;grid-template-columns:.85fr 1fr;
-    gap:clamp(34px,5.5vw,84px);align-items:center;
+  /* ===== O PROJETO =====
+     Fundo branco: destaca a seção contra o creme do resto da página e dá o
+     contraste máximo para o texto escuro e para o logo institucional. */
+  .projeto{
+    background:#FFFFFF;
+    color:var(--tinta);
   }
-  .founder-media{position:relative}
+  .projeto-grid{
+    display:grid;grid-template-columns:.8fr 1fr;
+    gap:clamp(34px,6vw,90px);align-items:start;
+  }
+  .projeto-head h2{
+    font-size:clamp(38px,5.6vw,74px);line-height:1.02;
+    margin:16px 0 26px;color:var(--tinta);
+  }
+  /* Assinatura institucional. O logo tem texto escuro, que assenta direto
+     sobre a aquarela clara — não precisa de placa atrás. */
+  .projeto-realizacao{margin-top:4px}
+  .projeto-realizacao-rot{
+    display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:700;color:var(--pedra);margin-bottom:14px;
+  }
+  .projeto-logo{width:100%;max-width:330px;height:auto;display:block}
+
+  .projeto-texto p{
+    color:var(--tinta-70);
+    font-size:clamp(15px,1.5vw,18px);line-height:1.7;
+    max-width:62ch;margin-bottom:20px;
+  }
+  /* primeiro parágrafo carrega a definição do projeto: entra com mais peso */
+  .projeto-texto .projeto-lead{
+    color:var(--tinta);font-weight:500;
+    font-size:clamp(17px,1.9vw,22px);line-height:1.55;
+    padding-left:20px;border-left:2px solid var(--pedra);
+  }
+
+  .projeto-acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  /* Marrom sobre a aquarela: 6,0:1 de contraste com o fundo e 7,3:1 entre
+     o creme e o marrom dentro do botão. */
+  .projeto-link{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--pedra);border:1.5px solid var(--pedra);border-radius:40px;
+    color:var(--creme);font-family:var(--font-body);font-size:11px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;padding:13px 26px;
+    transition:background .3s var(--ease), border-color .3s var(--ease), gap .3s var(--ease);
+  }
+  .projeto-link:hover{background:var(--pedra-esc);border-color:var(--pedra-esc);gap:14px}
+  .projeto-link.vazado{background:none;color:var(--pedra)}
+  .projeto-link.vazado:hover{background:var(--pedra);color:var(--creme)}
+
+  /* ===== A IDEALIZADORA ===== */
+  .founder {
+    background: url('Image 1.png') center / cover no-repeat !important;
+    position: relative;
+    overflow: hidden;
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+  }
+  .founder .wrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .founder-media {
+    display: none;
+  }
+  .founder-text {
+    max-width: 520px;
+    background: rgba(245, 237, 224, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: clamp(24px, 4vw, 40px);
+    border-radius: 14px;
+    border: 1px solid rgba(46, 32, 21, 0.12);
+    box-shadow: 0 20px 50px -15px rgba(46, 32, 21, 0.2);
+  }
+  @media (max-width: 768px) {
+    .founder {
+      background: #F8EFE0 url('mobile.png') top center / 100% auto no-repeat !important;
+      min-height: auto;
+      padding-top: clamp(200px, 64vw, 340px) !important;
+      padding-bottom: 48px !important;
+    }
+    .founder .wrap {
+      justify-content: center;
+      padding: 0 16px;
+    }
+    .founder-text {
+      width: 100%;
+      max-width: 100%;
+      background: rgba(245, 237, 224, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 24px 20px 28px;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(46, 32, 21, 0.12);
+    }
+  }
   .founder-photo{
     aspect-ratio:2/3;width:100%;max-width:420px;
     border-radius:6px;overflow:hidden;
@@ -673,14 +858,47 @@
   }
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: clamp(40px, 5vw, 80px);
+    grid-template-columns: 1.3fr 1.1fr 0.8fr;
+    gap: clamp(30px, 4vw, 70px);
     margin-bottom: 70px;
+  }
+  @media (max-width: 860px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
   }
   .foot-col.brand {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+  .foot-col.apoios h4 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 22px;
+    letter-spacing: .08em;
+    color: #FFFFFF;
+    text-transform: uppercase;
+  }
+  .foot-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .foot-logo-apoio {
+    max-width: 220px;
+    height: auto;
+    max-height: 80px;
+    object-fit: contain;
+    filter: brightness(0) invert(1) drop-shadow(0 4px 10px rgba(0,0,0,0.25));
+    opacity: .9;
+    transition: opacity .3s var(--ease);
+  }
+  .foot-logo-apoio:hover {
+    opacity: 1;
   }
   .footer .foot-logo {
     width: 200px;
@@ -830,6 +1048,9 @@
     .hm-block{min-height:auto;padding:34px 0}
     .hm-text{padding:20px 0 40px}
     .territory .wrap{grid-template-columns:1fr}
+    .projeto-grid{grid-template-columns:1fr;gap:28px}
+    .projeto-logo{max-width:290px}
+    .projeto-texto .projeto-lead{padding-left:16px}
     .founder .wrap{grid-template-columns:1fr;gap:34px}
     .founder-photo{max-width:340px;margin:0 auto}
 

@@ -10,26 +10,26 @@
    ========================================================================== */
 
 var ARTESAOS = [
-  { id:'arilene',   nome:'Arilene',              oficio:'Crochê',                  foto:'Art/Arilene.jpg',                                bio:'Artesã de Coronel José Dias, dedicada ao crochê manual em peças de vestuário.' },
-  { id:'arteniza',  nome:'Arteniza',             oficio:'Bordado & Aplicação',      foto:'Art/Arteniza.jpg',                               bio:'Bordadeira de Coronel José Dias. Traduz as figuras da arte rupestre em aplicações sobre algodão.' },
-  { id:'arylandia', nome:'Arylandia',            oficio:'Crochê',                   foto:'Art/Arylandia.jpg',                              bio:'Artesã de Coronel José Dias, especialista em crochê de trama aberta e franjas.' },
-  { id:'cristina',  nome:'Cristina',             oficio:'Pintura em Tecido',        foto:'Art/Cristina.jpg',                               bio:'Pinta à mão as paisagens da Serra da Capivara sobre algodão natural.' },
-  { id:'dani',      nome:'Dani Costuras',        oficio:'Costura & Modelagem',      foto:'Art/Dani Costuras.jpg',                          bio:'Especialista em costura e acabamentos manuais de alta qualidade. Dá forma às peças que as demais artesãs bordam e pintam.' },
-  { id:'gil',       nome:'Gil Paes',             oficio:'Pintura & Biojoias',       foto:'Art/Gil Paes.jpg',                               bio:'Artesão de Coronel José Dias. Assina as pinturas em tecido e as biojoias em cobre da coleção.' },
-  { id:'girlene',   nome:'Girlene',              oficio:'Bordado',                  foto:'Art/Girleinia.jpg',                              bio:'Bordadeira de Coronel José Dias. Seus pontos citam o mandacaru e as pinturas da Pedra Furada.' },
-  { id:'juliana',   nome:'Juliana',              oficio:'Biojoias em Prata',        foto:'Art/Juliana.jpg',                                bio:'Cria colares e brincos em prata com pingentes que reproduzem a arte rupestre.' },
-  { id:'kivia',     nome:'Kívia',                oficio:'Crochê — Bolsas',          foto:'Art/Kívia.jpg',                             bio:'Artesã de Coronel José Dias. Faz bolsas, clutches e pochetes em fio de malha.' },
-  { id:'leda',      nome:'Leda',                 oficio:'Costura & Modelagem',      foto:'Art/Leda.jpg',                                   bio:'Artesã de Coronel José Dias, dedicada à modelagem de peças amplas em algodão tinto.' },
-  { id:'luan',      nome:'Luan',                 oficio:'Pintura em Tecido',        foto:'Art/Luan/RAI_0055.jpg',                          bio:'Artesão de Coronel José Dias. Pinta o céu, a serra e a lua em peças de caimento amplo.' },
-  { id:'lucrecia',  nome:'Lucrecia',             oficio:'Crochê & Bordado',         foto:'Art/Lucrecia.jpg',                               bio:'Artesã de Coronel José Dias, une crochê e bordado em conjuntos de tom areia.' },
-  { id:'luiza',     nome:'Luiza Oliveira',       oficio:'Crochê',                   foto:'Art/Luiza Oliveira.jpg',                         bio:'Artesã de Coronel José Dias, especialista em crochê de ponto fechado e mangas estruturadas.' },
-  { id:'maricelia', nome:'Maricelia',            oficio:'Crochê',                   foto:'Art/Maricelia.jpg',                              bio:'Artesã de Coronel José Dias. Faz vestidos inteiros em crochê, ponto a ponto.' },
-  { id:'maryland',  nome:'Francilio & Maryland', oficio:'Macramê',                  foto:'Art/Francilio e Maryland.jpg',                   bio:'Dupla de artesãos de Coronel José Dias. O macramê deles vira cintos, ponchos e vestidos de nó aparente.' },
-  { id:'mercedes',  nome:'Mercedes Sousa',       oficio:'Crochê & Bordados',        foto:'Art/Mercedes.jpg',                               bio:'Trabalha há mais de 61 anos com crochê e bordados manuais em Coronel José Dias.' },
-  { id:'nara',      nome:'Nara Luzia',           oficio:'Richelieu & Bordado',      foto:'Art/Nara luzia (Nalu artes & bordados).jpg',     bio:'Nalu Artes & Bordados. Recorta e borda cactos em richelieu sobre linho.' },
-  { id:'oveide',    nome:'Oveide',               oficio:'Entalhe em Madeira',       foto:'Art/Oveide/RAI_9969.jpg',                        bio:'Artesão de Coronel José Dias. Entalha em madeira os pingentes que fecham os looks da coleção.' },
-  { id:'raimunda',  nome:'Raimunda',             oficio:'Biojoias',                 foto:'Art/Raimunda.jpg',                               bio:'Artesã de Coronel José Dias. Seus brincos gota levam pintura e gravação de arte rupestre.' },
-  { id:'rosalia',   nome:'Rosalia',              oficio:'Biojoias',                 foto:'Art/Rosalia.jpg',                                bio:'Artesã de Coronel José Dias, cria brincos em resina, madeira e contas.' }
+  { id:'arilene',   nome:'Arilene',              oficio:'Bordado & Crochê',        foto:'Art/Arilene.jpg',                            bio:'Trabalha com bordado ponto cruz e com todos os tipos de crochê há mais de 10 anos.' },
+  { id:'arteniza',  nome:'Arteniza',             oficio:'Bordado Richelieu',       foto:'Art/Arteniza.jpg',                           bio:'Trabalha há 10 anos com bordado richelieu.' },
+  { id:'arylandia', nome:'Arylândia Mota',       oficio:'Crochê',                  foto:'Art/Arylandia.jpg',                          bio:'Trabalha com peças em crochê desde a adolescência.' },
+  { id:'cristina',  nome:'Cristina',             oficio:'Pintura & Bordado',       foto:'Art/Cristina.jpg',                           bio:'Há 29 anos trabalha com pintura em tecido e bordados ponto cruz, ponto livre, pedraria e crochê.' },
+  { id:'dani',      nome:'Daniela Costuras',     oficio:'Costura',                 foto:'Art/Dani Costuras.jpg',                      bio:'Desde a adolescência trabalha com costura de roupas personalizadas.' },
+  { id:'gil',       nome:'Gil Paes',             oficio:'Pintura & Cerâmica',      foto:'Art/Gil Paes.jpg',                           bio:'Há 32 anos trabalha com pintura em tecido e cerâmica artesanal.' },
+  { id:'girlene',   nome:'Girlene',              oficio:'Bordado & Pintura',       foto:'Art/Girleinia.jpg',                          bio:'Trabalha com a produção de peças em bordado e pintura à mão.' },
+  { id:'juliana',   nome:'Juliana',              oficio:'Joias Rupestres',         foto:'Art/Juliana.jpg',                            bio:'Produz joias com desenhos das pinturas rupestres da Serra da Capivara.' },
+  { id:'kivia',     nome:'Kívia',                oficio:'Crochê',                  foto:'Art/Kívia.jpg',                              bio:'Faz roupas e acessórios, como bolsas, em crochê desde os 12 anos de idade.' },
+  { id:'leda',      nome:'Leda',                 oficio:'Bordado Ponto Cruz',      foto:'Art/Leda.jpg',                               bio:'Há 15 anos trabalha com bordado ponto cruz.' },
+  { id:'luan',      nome:'Luan Dias',            oficio:'Pintura em Tecido',       foto:'Art/Luan.png',                               bio:'Desde criança pinta desenhos e usa esse dom no artesanato com pintura em tecido.' },
+  { id:'lucrecia',  nome:'Lucrécia Assis',       oficio:'Costura, Bordado & Crochê', foto:'Art/Lucrecia.jpg',                         bio:'Costura, bordado e crochê são o seu forte há mais de 25 anos.' },
+  { id:'luiza',     nome:'Luíza Oliveira',       oficio:'Crochê',                  foto:'Art/Luiza Oliveira.jpg',                     bio:'Ainda criança aprendeu a fazer crochê. Produz roupas e bolsas, tudo em crochê.' },
+  { id:'maricelia', nome:'Maricelia',            oficio:'Crochê & Fuxico',         foto:'Art/Maricelia.jpg',                          bio:'Desde muito cedo aprendeu a fazer crochê. Trabalha produzindo peças em crochê e fuxico.' },
+  { id:'maryland',  nome:'Francílio & Maryland', oficio:'Macramê & Madeira',       foto:'Art/Francilio e Maryland.jpg',               bio:'Proprietários da Art Samaga. Trabalham com bolsas, roupas e cintos em madeira e macramê.' },
+  { id:'mercedes',  nome:'Mercedes Sousa',       oficio:'Crochê',                  foto:'Art/Mercedes.jpg',                           bio:'Há 61 anos trabalha com crochê, produzindo roupas.' },
+  { id:'nara',      nome:'Nara Luzia',           oficio:'Richelieu & Ponto Cheio', foto:'Art/Nara luzia (Nalu artes & bordados).jpg', bio:'Proprietária da Nalu Bordados. Produz peças em richelieu e ponto cheio há mais de 16 anos.' },
+  { id:'oveide',    nome:'Oveide & Ary',         oficio:'Artesanato em Madeira',   foto:'Art/Ovide.png',                              bio:'Produzem artesanato em madeira, como colares sofisticados e peças personalizadas, há mais de 20 anos.' },
+  { id:'raimunda',  nome:'Raimunda',             oficio:'Bordado & Biojoias',      foto:'Art/Raimunda.jpg',                           bio:'Bordadeira em ponto cruz. Faz biojoias em cabaça e semente há 10 anos.' },
+  { id:'rosalia',   nome:'Rosália',              oficio:'Colares & Bordado',       foto:'Art/Rosalia.jpg',                            bio:'Trabalha com artesanato em colares de sementes e bordado em tecido.' }
 ];
 
 /* --------------------------------------------------------------------------
@@ -63,7 +63,7 @@ var PRODUTOS = [
     fotos:['Art/Arteniza/RAI_9977.jpg','Art/Arteniza/RAI_9985.jpg','Art/Arteniza/RAI_9987.jpg','Art/Arteniza/RAI_9988.jpg','Art/Arteniza/RAI_9991.jpg','Art/Arteniza/RAI_9994.jpg'] },
 
   /* ---------- ARYLANDIA — crochê ---------- */
-  { id:'blusa-poncho-croche-verde-militar', nome:'Blusa poncho em crochê verde militar com franjas', tipo:'blusa', cor:'verde', tecnica:'crochê',
+  { id:'blusa-poncho-croche-verde-militar', nome:'Blusa de crochê com cena do beijo da Serra da Capivara', tipo:'blusa', cor:'verde', tecnica:'crochê',
     categoria:'Vestuário', artesaos:['arylandia'],
     fotos:['Art/Arylandia/RAI_0040.jpg','Art/Arylandia/RAI_0025.jpg','Art/Arylandia/RAI_0035.jpg','Art/Arylandia/RAI_0039.jpg','Art/Arylandia/RAI_0045.jpg','Art/Arylandia/RAI_0046.jpg'] },
 
@@ -72,11 +72,11 @@ var PRODUTOS = [
     fotos:['Art/Arylandia/RAI_0046.jpg','Art/Arylandia/RAI_0040.jpg','Art/Arylandia/RAI_0035.jpg','Art/Arylandia/RAI_0039.jpg'] },
 
   /* ---------- CRISTINA — pintura em tecido ---------- */
-  { id:'conjunto-pintado-terracota', nome:'Conjunto camisa e calça pintado à mão em terracota', tipo:'conjunto', cor:'terracota', tecnica:'pintura em tecido',
+  { id:'conjunto-pintado-terracota', nome:'Conjunto de blusa e calça pintada como a Pedra Furada e rochas da Serra da Capivara', tipo:'conjunto', cor:'terracota', tecnica:'pintura em tecido',
     categoria:'Vestuário', artesaos:['cristina'],
     fotos:['Art/Cristina/RAI_9701.jpg','Art/Cristina/RAI_9696.jpg','Art/Cristina/RAI_9703.jpg'] },
 
-  { id:'conjunto-top-saia-pintado-serra', nome:'Top amarelo e saia curta pintados com a paisagem da Serra', tipo:'conjunto', cor:'amarelo', tecnica:'pintura em tecido',
+  { id:'conjunto-top-saia-pintado-serra', nome:'Conjunto de saia e blusa com pedra furada', tipo:'conjunto', cor:'amarelo', tecnica:'pintura em tecido',
     categoria:'Vestuário', artesaos:['cristina'],
     fotos:['Art/Cristina/RAI_9763.jpg','Art/Cristina/RAI_9757.jpg','Art/Cristina/RAI_9768.jpg'] },
 
@@ -213,7 +213,7 @@ var PRODUTOS = [
     fotos:['Art/Maricelia/RAI_9574.jpg','Art/Maricelia/RAI_9571.jpg','Art/Maricelia/RAI_9575.jpg','Art/Kivia/RAI_9578.jpg','Art/Kivia/RAI_9581.jpg','Art/Kivia/RAI_9582.jpg','Art/Kivia/RAI_9583.jpg','Art/Maryland/RAI_9578.jpg','Art/Maryland/RAI_9581.jpg'] },
 
   /* ---------- FRANCILIO & MARYLAND — macramê ---------- */
-  { id:'poncho-macrame-marrom', nome:'Poncho em macramê marrom com franjas', tipo:'poncho', cor:'marrom', tecnica:'macramê',
+  { id:'poncho-macrame-marrom', nome:'Vestido com bata em macramê', tipo:'poncho', cor:'marrom', tecnica:'macramê',
     categoria:'Vestuário', artesaos:['maryland'],
     fotos:['Art/Maryland/RAI_0014.jpg','Art/Maryland/RAI_0002.jpg','Art/Maryland/RAI_0011.jpg','Art/Rosalia/RAI_0017.jpg','Art/Rosalia/RAI_0020.jpg'] },
 
@@ -249,7 +249,7 @@ var PRODUTOS = [
     fotos:['Art/Oveide/RAI_9964.jpg','Art/Oveide/RAI_9952.jpg','Art/Oveide/RAI_9969.jpg','Art/Kivia/RAI_9953.jpg','Art/Kivia/RAI_9949.jpg'] },
 
   /* ---------- RAIMUNDA — biojoias ---------- */
-  { id:'brinco-gota-madeira-rupestre', nome:'Brinco gota em madeira com pintura rupestre', tipo:'brinco', cor:'marrom', tecnica:'biojoia',
+  { id:'brinco-gota-madeira-rupestre', nome:'Brinco em semente com cena do beijo', tipo:'brinco', cor:'marrom', tecnica:'biojoia',
     categoria:'Acessórios', artesaos:['raimunda'],
     fotos:['Art/Raimunda/DSC02171 copiar.jpg','Art/Raimunda/DSC02173 copiar.jpg'] },
 
@@ -350,4 +350,101 @@ function buscarProdutos(termo) {
   return PRODUTOS.filter(function (p) {
     return termos.every(function (t) { return p.busca.indexOf(t) !== -1; });
   });
+}
+
+/* ==========================================================================
+   AJUSTES DO ADMIN (nome da peça e WhatsApp de atendimento)
+
+   Vêm da API (backend/). O que está acima neste arquivo é o acervo fixo, que
+   casa com os arquivos de /Art. Se a API estiver fora do ar, o site funciona
+   normalmente com os nomes daqui e o número padrão da marca.
+   ========================================================================== */
+
+/* Em produção, sirva a API no mesmo domínio sob /api e isto funciona sem
+   mudança. Em desenvolvimento o site roda na 8000 e a API na 3000. */
+/* O teste de `location` é protegido porque este arquivo também é lido fora do
+   navegador (o seed do backend usa ARTESAOS/PRODUTOS daqui). */
+var API_AJUSTES = (typeof location !== 'undefined' &&
+                   (location.hostname === '127.0.0.1' || location.hostname === 'localhost'))
+  ? 'http://127.0.0.1:3000/api/ajustes'
+  : '/api/ajustes';
+
+/* Usado só quando nem a peça nem os artesãos creditados têm número. */
+var WHATSAPP_PADRAO = '5586999999999';
+
+var _ouvintesCatalogo = [];
+
+/* Registra algo para rodar de novo quando os ajustes chegarem da API. */
+function aoAtualizarCatalogo(fn) { _ouvintesCatalogo.push(fn); }
+
+/* Para qual número vai o pedido desta peça:
+   1. exceção cadastrada na própria peça
+   2. artesão definido como quem atende
+   3. primeiro artesão creditado que tenha número
+   4. número padrão da marca */
+function whatsappDaPeca(p) {
+  if (p.whatsapp) return p.whatsapp;
+
+  var ordem = [];
+  if (p.artesaoContato) ordem.push(p.artesaoContato);
+  p.artesaos.forEach(function (id) { if (ordem.indexOf(id) === -1) ordem.push(id); });
+
+  for (var i = 0; i < ordem.length; i++) {
+    var a = ARTESAOS.filter(function (x) { return x.id === ordem[i]; })[0];
+    if (a && a.whatsapp) return a.whatsapp;
+  }
+  return WHATSAPP_PADRAO;
+}
+
+/* Nome de quem vai atender o pedido (para o texto da mensagem). */
+function atendenteDaPeca(p) {
+  var id = p.artesaoContato || p.artesaos[0];
+  var a = ARTESAOS.filter(function (x) { return x.id === id; })[0];
+  return a ? a.nome : p.artesaosNomes[0];
+}
+
+/* Sobrepõe os dados da API ao catálogo em memória. */
+function aplicarAjustes(dados) {
+  if (!dados) return;
+
+  if (dados.artesaos) {
+    ARTESAOS.forEach(function (a) {
+      var ajuste = dados.artesaos[a.id];
+      if (ajuste && ajuste.whatsapp) a.whatsapp = ajuste.whatsapp;
+    });
+  }
+
+  if (dados.pecas) {
+    PRODUTOS.forEach(function (p) {
+      var ajuste = dados.pecas[p.id];
+      if (!ajuste) return;
+      if (ajuste.nome && ajuste.nome !== p.nome) {
+        p.nome = ajuste.nome;
+        /* o índice de busca precisa acompanhar o nome novo */
+        p.busca = normalizar([
+          p.nome, p.tipo, p.cor, p.tecnica, p.categoria, p.artesaosNomes.join(' ')
+        ].join(' '));
+      }
+      if (ajuste.whatsapp) p.whatsapp = ajuste.whatsapp;
+      if (ajuste.artesaoContato) p.artesaoContato = ajuste.artesaoContato;
+    });
+  }
+}
+
+/* Busca os ajustes e avisa quem estiver ouvindo. Nunca rejeita: se a API não
+   responder, o site segue com o catálogo local. */
+function carregarAjustes() {
+  if (typeof fetch !== 'function') return Promise.resolve(false);
+
+  return fetch(API_AJUSTES, { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (dados) {
+      if (!dados) return false;
+      aplicarAjustes(dados);
+      _ouvintesCatalogo.forEach(function (fn) {
+        try { fn(); } catch (e) { /* um ouvinte com erro não derruba os outros */ }
+      });
+      return true;
+    })
+    .catch(function () { return false; });
 }

@@ -104,11 +104,19 @@
           <a href="https://wa.me/5586999999999" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
       </div>
+      <!-- Coluna Realização -->
+      <div class="foot-col apoios">
+        <h4>Realização</h4>
+        <div class="foot-logos">
+          <img class="foot-logo-apoio" src="secretaria municipal da mulher.png" alt="Secretaria Municipal da Mulher - Coronel José Dias" />
+        </div>
+      </div>
       <!-- Coluna Quick Links -->
       <div class="foot-col links">
         <h4>Navegação</h4>
         <div class="foot-nav-links">
           <a href="index.html#colecoes">Coleções</a>
+          <a href="index.html#projeto">O Projeto</a>
           <a href="busca.html">O Acervo</a>
           <a href="index.html#territorio">Nossa História</a>
           <a href="#">Atacado & Parcerias</a>
@@ -299,8 +307,29 @@
     }
   }
 
-  var phoneNumber = "5586999999999";
-  pWaBtn.href = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(prod.waText);
+  /* Para qual WhatsApp vai o pedido desta peça. Começa com o que dá para
+     resolver do catálogo local e é refeito quando os ajustes chegam da API —
+     assim o botão nunca fica sem link, mesmo com a API fora do ar. */
+  function atualizarBotaoWhatsapp(){
+    var numero = WHATSAPP_PADRAO;
+    var texto  = prod.waText;
+
+    if(doCat){
+      numero = whatsappDaPeca(doCat);
+      texto  = 'Olá, ' + atendenteDaPeca(doCat) + '! Gostaria de saber mais sobre a peça "' +
+               doCat.nome + '" que vi no site Essência da Serra.';
+      /* o nome da peça também pode ter mudado no admin */
+      pTitle.textContent = doCat.nome;
+      document.title = doCat.nome + ' — Essência da Serra';
+    }
+
+    pWaBtn.href = 'https://api.whatsapp.com/send?phone=' + numero +
+                  '&text=' + encodeURIComponent(texto);
+  }
+
+  atualizarBotaoWhatsapp();
+  aoAtualizarCatalogo(atualizarBotaoWhatsapp);
+  carregarAjustes();
 
   function updateGallery() {
     pMainImg.src = currentImages[currentImgIdx];

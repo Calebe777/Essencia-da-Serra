@@ -545,6 +545,53 @@
     updateGallery();
   });
 
+  /* ---- Swipe horizontal (touch & mouse) para deslizar as fotos ---- */
+  var pWrap = document.querySelector('.p-main-img-wrap');
+  if(pWrap){
+    var sX = 0, sY = 0, dX = 0, dY = 0, isDrag = false;
+    pWrap.addEventListener('touchstart', function(e){
+      if(e.touches.length > 1) return;
+      sX = e.touches[0].clientX;
+      sY = e.touches[0].clientY;
+    }, {passive: true});
+
+    pWrap.addEventListener('touchend', function(e){
+      if(!e.changedTouches.length) return;
+      dX = e.changedTouches[0].clientX - sX;
+      dY = e.changedTouches[0].clientY - sY;
+      if(Math.abs(dX) > 30 && Math.abs(dX) > Math.abs(dY)){
+        if(dX < 0){
+          currentImgIdx = (currentImgIdx + 1) % currentImages.length;
+        } else {
+          currentImgIdx = (currentImgIdx - 1 + currentImages.length) % currentImages.length;
+        }
+        updateGallery();
+      }
+    }, {passive: true});
+
+    pWrap.addEventListener('mousedown', function(e){
+      if(e.button !== 0) return;
+      isDrag = true;
+      sX = e.clientX;
+      sY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', function(e){
+      if(!isDrag) return;
+      isDrag = false;
+      dX = e.clientX - sX;
+      dY = e.clientY - sY;
+      if(Math.abs(dX) > 40 && Math.abs(dX) > Math.abs(dY)){
+        if(dX < 0){
+          currentImgIdx = (currentImgIdx + 1) % currentImages.length;
+        } else {
+          currentImgIdx = (currentImgIdx - 1 + currentImages.length) % currentImages.length;
+        }
+        updateGallery();
+      }
+    });
+  }
+
   /* ---- Renderiza a Seção "Explore Outras Peças" ---- */
   var moreGrid = document.getElementById('moreGrid');
   if(moreGrid && typeof PRODUTOS !== 'undefined'){

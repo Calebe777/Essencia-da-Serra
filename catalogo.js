@@ -42,7 +42,7 @@ var ARTESAOS = [
    fotos     — todas as fotos em que a peça aparece, na pasta de cada artesão
    -------------------------------------------------------------------------- */
 
-var PRODUTOS = [`; } catch (e) {}
+var PRODUTOS = [
 
   /* ---------- ARILENE — crochê ---------- */
   { id:'saia-longa-croche-verde', nome:'Saia longa em crochê verde', tipo:'saia', cor:'verde', tecnica:'crochê',

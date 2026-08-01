@@ -542,7 +542,7 @@
   .cats-todas:hover{color:var(--terracota);gap:12px}
 
   /* ===== COLEÇÕES full-bleed ===== */
-  .coll{position:relative;height:min(94vh,820px);min-height:520px;overflow:hidden;display:flex;align-items:center;background: url('img/coll-serra-rupestre-desktop.jpg') center/cover no-repeat !important;}
+  .coll{position:relative;height:min(94vh,820px);min-height:520px;overflow:hidden;display:flex;align-items:center;background: #F8EFE0 url('img/coll-serra-rupestre-desktop.webp') center/cover no-repeat !important;}
   .coll-bg{display:none}
   .coll::before{display:none}
   .coll-media-mobile{display:none}
@@ -691,7 +691,7 @@
      média 218/255): o texto escuro da seção mantém contraste de 11,2:1,
      então não precisa de véu por cima. */
   .territory{
-    background:url('img/bg-serra-sem-pessoas.jpg') center/cover no-repeat;
+    background:url('img/bg-serra-sem-pessoas.webp') center/cover no-repeat;
     background-color:#F7E3CE;   /* enquanto a imagem carrega */
   }
   /* Sobre a aquarela o terracota cai a 3,2:1 — abaixo do mínimo para texto.

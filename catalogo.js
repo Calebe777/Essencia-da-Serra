@@ -10,26 +10,26 @@
    ========================================================================== */
 
 var ARTESAOS = [
-  { id:'arilene',   nome:'Arilene',              oficio:'Bordado & Crochê',        foto:'Art/Arilene.jpg',                            bio:'Trabalha com bordado ponto cruz e com todos os tipos de crochê há mais de 10 anos.' },
-  { id:'arteniza',  nome:'Arteniza',             oficio:'Bordado Richelieu',       foto:'Art/Arteniza.jpg',                           bio:'Trabalha há 10 anos com bordado richelieu.' },
-  { id:'arylandia', nome:'Arylândia Mota',       oficio:'Crochê',                  foto:'Art/Arylandia.jpg',                          bio:'Trabalha com peças em crochê desde a adolescência.' },
-  { id:'cristina',  nome:'Cristina',             oficio:'Pintura & Bordado',       foto:'Art/Cristina.jpg',                           bio:'Há 29 anos trabalha com pintura em tecido e bordados ponto cruz, ponto livre, pedraria e crochê.' },
-  { id:'dani',      nome:'Daniela Costuras',     oficio:'Costura',                 foto:'Art/Dani Costuras.jpg',                      bio:'Desde a adolescência trabalha com costura de roupas personalizadas.' },
-  { id:'gil',       nome:'Gil Paes',             oficio:'Pintura & Cerâmica',      foto:'Art/Gil Paes.jpg',                           bio:'Há 32 anos trabalha com pintura em tecido e cerâmica artesanal.' },
-  { id:'girlene',   nome:'Girlene',              oficio:'Bordado & Pintura',       foto:'Art/Girleinia.jpg',                          bio:'Trabalha com a produção de peças em bordado e pintura à mão.' },
-  { id:'juliana',   nome:'Juliana',              oficio:'Joias Rupestres',         foto:'Art/Juliana.jpg',                            bio:'Produz joias com desenhos das pinturas rupestres da Serra da Capivara.' },
-  { id:'kivia',     nome:'Kívia',                oficio:'Crochê',                  foto:'Art/Kívia.jpg',                              bio:'Faz roupas e acessórios, como bolsas, em crochê desde os 12 anos de idade.' },
-  { id:'leda',      nome:'Leda',                 oficio:'Bordado Ponto Cruz',      foto:'Art/Leda.jpg',                               bio:'Há 15 anos trabalha com bordado ponto cruz.' },
-  { id:'luan',      nome:'Luan Dias',            oficio:'Pintura em Tecido',       foto:'Art/Luan.png',                               bio:'Desde criança pinta desenhos e usa esse dom no artesanato com pintura em tecido.' },
-  { id:'lucrecia',  nome:'Lucrécia Assis',       oficio:'Costura, Bordado & Crochê', foto:'Art/Lucrecia.jpg',                         bio:'Costura, bordado e crochê são o seu forte há mais de 25 anos.' },
-  { id:'luiza',     nome:'Luíza Oliveira',       oficio:'Crochê',                  foto:'Art/Luiza Oliveira.jpg',                     bio:'Ainda criança aprendeu a fazer crochê. Produz roupas e bolsas, tudo em crochê.' },
-  { id:'maricelia', nome:'Maricelia',            oficio:'Crochê & Fuxico',         foto:'Art/Maricelia.jpg',                          bio:'Desde muito cedo aprendeu a fazer crochê. Trabalha produzindo peças em crochê e fuxico.' },
-  { id:'maryland',  nome:'Francílio & Maryland', oficio:'Macramê & Madeira',       foto:'Art/Francilio e Maryland.jpg',               bio:'Proprietários da Art Samaga. Trabalham com bolsas, roupas e cintos em madeira e macramê.' },
-  { id:'mercedes',  nome:'Mercedes Sousa',       oficio:'Crochê',                  foto:'Art/Mercedes.jpg',                           bio:'Há 61 anos trabalha com crochê, produzindo roupas.' },
-  { id:'nara',      nome:'Nara Luzia',           oficio:'Richelieu & Ponto Cheio', foto:'Art/Nara luzia (Nalu artes & bordados).jpg', bio:'Proprietária da Nalu Bordados. Produz peças em richelieu e ponto cheio há mais de 16 anos.' },
-  { id:'oveide',    nome:'Oveide & Ary',         oficio:'Artesanato em Madeira',   foto:'Art/Ovide.png',                              bio:'Produzem artesanato em madeira, como colares sofisticados e peças personalizadas, há mais de 20 anos.' },
-  { id:'raimunda',  nome:'Raimunda',             oficio:'Bordado & Biojoias',      foto:'Art/Raimunda.jpg',                           bio:'Bordadeira em ponto cruz. Faz biojoias em cabaça e semente há 10 anos.' },
-  { id:'rosalia',   nome:'Rosália',              oficio:'Colares & Bordado',       foto:'Art/Rosalia.jpg',                            bio:'Trabalha com artesanato em colares de sementes e bordado em tecido.' }
+  { id:'arilene',   nome:'Arilene',              oficio:'Bordado & Crochê',        foto:'Art/Arilene.jpg',                            bio:'Trabalha com bordado ponto cruz e com todos os tipos de crochê há mais de 10 anos.', whatsapp:'5589981291404' },
+  { id:'arteniza',  nome:'Arteniza',             oficio:'Bordado Richelieu',       foto:'Art/Arteniza.jpg',                           bio:'Trabalha há 10 anos com bordado richelieu.', whatsapp:'5589981205893' },
+  { id:'arylandia', nome:'Arylândia Mota',       oficio:'Crochê',                  foto:'Art/Arylandia.jpg',                          bio:'Trabalha com peças em crochê desde a adolescência.', whatsapp:'5589981283271' },
+  { id:'cristina',  nome:'Cristina',             oficio:'Pintura & Bordado',       foto:'Art/Cristina.jpg',                           bio:'Há 29 anos trabalha com pintura em tecido e bordados ponto cruz, ponto livre, pedraria e crochê.', whatsapp:'5589981310537' },
+  { id:'dani',      nome:'Daniela Costuras',     oficio:'Costura',                 foto:'Art/Dani Costuras.jpg',                      bio:'Desde a adolescência trabalha com costura de roupas personalizadas.', whatsapp:'5589981137945' },
+  { id:'gil',       nome:'Gil Paes',             oficio:'Pintura & Cerâmica',      foto:'Art/Gil Paes.jpg',                           bio:'Há 32 anos trabalha com pintura em tecido e cerâmica artesanal.', whatsapp:'5589981489408' },
+  { id:'girlene',   nome:'Girlene',              oficio:'Bordado & Pintura',       foto:'Art/Girleinia.jpg',                          bio:'Trabalha com a produção de peças em bordado e pintura à mão.', whatsapp:'5589981021703' },
+  { id:'juliana',   nome:'Juliana',              oficio:'Joias Rupestres',         foto:'Art/Juliana.jpg',                            bio:'Produz joias com desenhos das pinturas rupestres da Serra da Capivara.', whatsapp:'5589981124624' },
+  { id:'kivia',     nome:'Kívia',                oficio:'Crochê',                  foto:'Art/Kívia.jpg',                              bio:'Faz roupas e acessórios, como bolsas, em crochê desde os 12 anos de idade.', whatsapp:'5589981105153' },
+  { id:'leda',      nome:'Leda',                 oficio:'Bordado Ponto Cruz',      foto:'Art/Leda.jpg',                               bio:'Há 15 anos trabalha com bordado ponto cruz.', whatsapp:'5589981205893' },
+  { id:'luan',      nome:'Luan Dias',            oficio:'Pintura em Tecido',       foto:'Art/Luan.png',                               bio:'Desde criança pinta desenhos e usa esse dom no artesanato com pintura em tecido.', whatsapp:'5589981381169' },
+  { id:'lucrecia',  nome:'Lucrécia Assis',       oficio:'Costura, Bordado & Crochê', foto:'Art/Lucrecia.jpg',                         bio:'Costura, bordado e crochê são o seu forte há mais de 25 anos.', whatsapp:'5589981020080' },
+  { id:'luiza',     nome:'Luíza Oliveira',       oficio:'Crochê',                  foto:'Art/Luiza Oliveira.jpg',                     bio:'Ainda criança aprendeu a fazer crochê. Produz roupas e bolsas, tudo em crochê.', whatsapp:'5589981005901' },
+  { id:'maricelia', nome:'Maricelia',            oficio:'Crochê & Fuxico',         foto:'Art/Maricelia.jpg',                          bio:'Desde muito cedo aprendeu a fazer crochê. Trabalha produzindo peças em crochê e fuxico.', whatsapp:'5589981455175' },
+  { id:'maryland',  nome:'Francílio & Maryland', oficio:'Macramê & Madeira',       foto:'Art/Francilio e Maryland.jpg',               bio:'Proprietários da Art Samaga. Trabalham com bolsas, roupas e cintos em madeira e macramê.', whatsapp:'5589981008509' },
+  { id:'mercedes',  nome:'Mercedes Sousa',       oficio:'Crochê',                  foto:'Art/Mercedes.jpg',                           bio:'Há 61 anos trabalha com crochê, produzindo roupas.', whatsapp:'5589981110377' },
+  { id:'nara',      nome:'Nara Luzia',           oficio:'Richelieu & Ponto Cheio', foto:'Art/Nara luzia (Nalu artes & bordados).jpg', bio:'Proprietária da Nalu Bordados. Produz peças em richelieu e ponto cheio há mais de 16 anos.', whatsapp:'5589981372689' },
+  { id:'oveide',    nome:'Oveide & Ary',         oficio:'Artesanato em Madeira',   foto:'Art/Ovide.png',                              bio:'Produzem artesanato em madeira, como colares sofisticados e peças personalizadas, há mais de 20 anos.', whatsapp:'5589981171900' },
+  { id:'raimunda',  nome:'Raimunda',             oficio:'Bordado & Biojoias',      foto:'Art/Raimunda.jpg',                           bio:'Bordadeira em ponto cruz. Faz biojoias em cabaça e semente há 10 anos.', whatsapp:'5589981015934' },
+  { id:'rosalia',   nome:'Rosália',              oficio:'Colares & Bordado',       foto:'Art/Rosalia.jpg',                            bio:'Trabalha com artesanato em colares de sementes e bordado em tecido.', whatsapp:'5589981054638' }
 ];
 
 /* --------------------------------------------------------------------------
@@ -42,7 +42,7 @@ var ARTESAOS = [
    fotos     — todas as fotos em que a peça aparece, na pasta de cada artesão
    -------------------------------------------------------------------------- */
 
-var PRODUTOS = [
+var PRODUTOS = [`; } catch (e) {}
 
   /* ---------- ARILENE — crochê ---------- */
   { id:'saia-longa-croche-verde', nome:'Saia longa em crochê verde', tipo:'saia', cor:'verde', tecnica:'crochê',
@@ -370,7 +370,7 @@ var API_AJUSTES = (typeof location !== 'undefined' &&
   : '/api/ajustes';
 
 /* Usado só quando nem a peça nem os artesãos creditados têm número. */
-var WHATSAPP_PADRAO = '5586999999999';
+var WHATSAPP_PADRAO = '5589981291404';
 
 var _ouvintesCatalogo = [];
 

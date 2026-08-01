@@ -321,7 +321,7 @@ PRODUTOS.forEach(function (p) {
 function fotoWeb(caminho, tamanho) {
   var relativo = String(caminho)
     .replace(/^Art\//, '')
-    .replace(/\.(jpe?g|png)$/i, '.jpg');
+    .replace(/\.(jpe?g|png|webp)$/i, '.webp');
   return encodeURI('web/' + tamanho + '/' + relativo)
     .replace(/'/g, '%27').replace(/\(/g, '%28')
     .replace(/\)/g, '%29').replace(/&/g, '%26');

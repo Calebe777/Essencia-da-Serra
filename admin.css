@@ -1,0 +1,182 @@
+/* ==========================================================================
+   ADMIN — Essência da Serra
+   Interface de trabalho: densa, legível, sem enfeite. Não usa style.css
+   para não herdar as animações e a tipografia editorial do site.
+   ========================================================================== */
+
+:root{
+  --tinta:#2E2015;
+  --tinta-70:rgba(46,32,21,.7);
+  --creme:#F7F3EC;
+  --terracota:#C0562F;
+  --rupestre:#8B3A1E;
+  --verde:#2F6B4F;
+  --borda:rgba(46,32,21,.16);
+  --fonte:'Montserrat',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:var(--fonte);
+  background:var(--creme);
+  color:var(--tinta);
+  font-size:14px;
+  line-height:1.5;
+  padding-bottom:60px;
+}
+
+.adm-wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* ----- topo ----- */
+.adm-topo{
+  background:var(--tinta);color:var(--creme);
+  padding:18px 0;margin-bottom:28px;
+}
+.adm-topo .adm-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.adm-eyebrow{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(247,243,236,.6);
+}
+.adm-topo h1{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.adm-topo-dir{display:flex;align-items:center;gap:14px}
+.adm-quem{font-size:12px;color:rgba(247,243,236,.75)}
+.adm-btn-linha{
+  background:none;border:1px solid rgba(247,243,236,.4);border-radius:20px;
+  color:var(--creme);font-family:inherit;font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;padding:7px 16px;cursor:pointer;
+}
+.adm-btn-linha:hover{background:rgba(247,243,236,.15)}
+
+/* ----- cartões ----- */
+.adm-card{
+  background:#fff;border:1px solid var(--borda);border-radius:10px;
+  padding:clamp(18px,3vw,28px);margin-bottom:22px;
+}
+.adm-card h2{font-size:17px;font-weight:600;margin-bottom:6px}
+.adm-ajuda{font-size:13px;color:var(--tinta-70);margin-bottom:18px;max-width:70ch}
+
+/* ----- login ----- */
+.adm-login{max-width:390px;margin:40px auto}
+.adm-login label{display:block;margin-bottom:14px;font-size:12px;font-weight:600}
+.adm-login input{
+  display:block;width:100%;margin-top:6px;
+  font-family:inherit;font-size:15px;padding:11px 13px;
+  border:1px solid var(--borda);border-radius:7px;background:#fff;color:var(--tinta);
+}
+.adm-login input:focus{outline:2px solid var(--terracota);outline-offset:-1px;border-color:var(--terracota)}
+.adm-btn{
+  width:100%;background:var(--terracota);border:none;border-radius:7px;
+  color:#fff;font-family:inherit;font-size:13px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;padding:13px;cursor:pointer;
+  margin-top:6px;transition:background .2s;
+}
+.adm-btn:hover{background:var(--rupestre)}
+.adm-btn:disabled{opacity:.6;cursor:default}
+
+.adm-erro{
+  margin-top:14px;padding:11px 13px;border-radius:7px;
+  background:rgba(192,86,47,.1);border:1px solid rgba(192,86,47,.35);
+  color:var(--rupestre);font-size:13px;
+}
+.adm-erro[hidden]{display:none}
+
+/* ----- abas ----- */
+.adm-abas{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.adm-abas button{
+  background:none;border:1px solid var(--borda);border-radius:24px;
+  font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.06em;
+  color:var(--tinta);padding:9px 18px;cursor:pointer;transition:all .2s;
+}
+.adm-abas button:hover{border-color:var(--terracota);color:var(--terracota)}
+.adm-abas button.active{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.adm-abas button span{opacity:.55;font-weight:500}
+.adm-aba[hidden]{display:none}
+
+/* ----- filtro ----- */
+.adm-filtro{
+  width:100%;font-family:inherit;font-size:14px;padding:11px 14px;
+  border:1px solid var(--borda);border-radius:7px;margin-bottom:18px;
+}
+.adm-filtro:focus{outline:2px solid var(--terracota);outline-offset:-1px}
+
+/* ----- lista ----- */
+.adm-lista{display:flex;flex-direction:column;gap:10px}
+.adm-item{
+  display:flex;align-items:center;gap:16px;
+  border:1px solid var(--borda);border-radius:9px;padding:13px 15px;
+  background:#fff;
+}
+.adm-item:hover{border-color:rgba(46,32,21,.3)}
+.adm-item.peca{align-items:flex-start}
+
+.adm-thumb{
+  width:54px;height:81px;flex-shrink:0;border-radius:5px;
+  object-fit:contain;background:rgba(46,32,21,.05);
+}
+.adm-item-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.adm-item-info strong{font-size:14px;font-weight:600}
+.adm-meta{font-size:11.5px;color:var(--tinta-70)}
+
+.adm-sub{
+  display:block;font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tinta-70);
+}
+.adm-sub input,.adm-sub select{
+  display:block;margin-top:4px;font-family:inherit;font-size:14px;
+  padding:8px 10px;border:1px solid var(--borda);border-radius:6px;
+  background:#fff;color:var(--tinta);width:100%;
+}
+.adm-sub input:focus,.adm-sub select:focus{
+  outline:2px solid var(--terracota);outline-offset:-1px;border-color:var(--terracota);
+}
+.adm-nome{font-weight:600}
+
+.adm-item-campos{
+  display:flex;flex-direction:column;gap:9px;align-items:stretch;
+  width:230px;flex-shrink:0;
+}
+.adm-item-campos .adm-tel{
+  font-family:inherit;font-size:14px;padding:8px 10px;
+  border:1px solid var(--borda);border-radius:6px;width:100%;
+}
+.adm-item-campos .adm-tel:focus{outline:2px solid var(--terracota);outline-offset:-1px}
+
+.adm-btn-mini{
+  background:var(--tinta);border:none;border-radius:6px;color:#fff;
+  font-family:inherit;font-size:11px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;padding:9px 14px;cursor:pointer;transition:background .2s;
+}
+.adm-btn-mini:hover{background:var(--terracota)}
+.adm-btn-mini:disabled{opacity:.55;cursor:default}
+
+/* ----- etiquetas de origem do número ----- */
+.adm-tag{
+  display:inline-block;align-self:flex-start;
+  font-size:11px;padding:3px 9px;border-radius:14px;
+  background:rgba(47,107,79,.1);color:var(--verde);border:1px solid rgba(47,107,79,.3);
+}
+.adm-tag.excecao{
+  background:rgba(192,86,47,.1);color:var(--rupestre);border-color:rgba(192,86,47,.35);
+}
+.adm-tag.alerta{
+  background:rgba(216,155,78,.16);color:#8a5a15;border-color:rgba(216,155,78,.5);
+}
+
+.adm-vazio{font-size:13px;color:var(--tinta-70);padding:26px 0;text-align:center}
+
+/* ----- aviso flutuante ----- */
+.adm-aviso{
+  position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+  background:var(--tinta);color:var(--creme);
+  padding:13px 22px;border-radius:26px;font-size:13px;font-weight:500;
+  box-shadow:0 12px 34px rgba(46,32,21,.35);z-index:50;max-width:90vw;
+}
+.adm-aviso.erro{background:var(--rupestre)}
+.adm-aviso[hidden]{display:none}
+
+/* ----- responsivo ----- */
+@media (max-width:760px){
+  .adm-item,.adm-item.peca{flex-direction:column;align-items:stretch}
+  .adm-item-campos{width:100%}
+  .adm-thumb{width:64px;height:96px}
+}

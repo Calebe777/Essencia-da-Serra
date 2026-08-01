@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
 import productRoutes from './routes/products';
+import ajustesRoutes from './routes/ajustes';
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use('/uploads', express.static('uploads'));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/ajustes', ajustesRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

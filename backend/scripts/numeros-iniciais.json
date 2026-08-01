@@ -1,0 +1,29 @@
+{
+  "_comentario": [
+    "Números de WhatsApp de cada artesão, como informados pela Essência da Serra.",
+    "O seed usa isto SÓ para preencher quem ainda está sem número no banco —",
+    "nunca sobrescreve um número já cadastrado pelo admin. Serve para o banco",
+    "poder ser recriado do zero sem perder os contatos.",
+    "Formato: dígitos com DDI (55) + DDD + número."
+  ],
+  "arilene": "5589981291404",
+  "arteniza": "5589981205893",
+  "arylandia": "5589981283271",
+  "cristina": "5589981310537",
+  "dani": "5589981137945",
+  "gil": "5589981489408",
+  "girlene": "5589981021703",
+  "juliana": "5589981124624",
+  "kivia": "5589981105153",
+  "leda": "5589981205893",
+  "luan": "5589981381169",
+  "lucrecia": "5589981020080",
+  "luiza": "5589981005901",
+  "maricelia": "5589981455175",
+  "maryland": "5589981008509",
+  "mercedes": "5589981110377",
+  "nara": "5589981372689",
+  "oveide": "5589981171900",
+  "raimunda": "5589981015934",
+  "rosalia": "5589981054638"
+}

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administração — Essência da Serra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="adm-topo">
+  <div class="adm-wrap">
+    <div>
+      <p class="adm-eyebrow">Essência da Serra</p>
+      <h1>Administração</h1>
+    </div>
+    <div class="adm-topo-dir">
+      <span class="adm-quem" id="admQuem"></span>
+      <button type="button" class="adm-btn-linha" id="admSair" hidden>Sair</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== LOGIN ===== -->
+<main class="adm-wrap" id="admLogin">
+  <form class="adm-card adm-login" id="admFormLogin">
+    <h2>Entrar</h2>
+    <p class="adm-ajuda">Acesso restrito à administração da marca.</p>
+    <label>E-mail
+      <input type="email" id="admEmail" autocomplete="username" required>
+    </label>
+    <label>Senha
+      <input type="password" id="admSenha" autocomplete="current-password" required>
+    </label>
+    <button type="submit" class="adm-btn" id="admEntrar">Entrar</button>
+    <p class="adm-erro" id="admErroLogin" hidden></p>
+  </form>
+</main>
+
+<!-- ===== PAINEL ===== -->
+<main class="adm-wrap" id="admPainel" hidden>
+
+  <nav class="adm-abas" role="tablist">
+    <button type="button" class="active" data-aba="pecas">Peças <span id="admQtdPecas"></span></button>
+    <button type="button" data-aba="artesaos">Artesãos <span id="admQtdArtesaos"></span></button>
+  </nav>
+
+  <!-- ---------- ARTESÃOS ---------- -->
+  <section class="adm-aba" data-aba="artesaos" hidden>
+    <div class="adm-card">
+      <h2>Número de cada artesão</h2>
+      <p class="adm-ajuda">Este é o número padrão: todas as peças do artesão passam a encaminhar para ele. Digite com DDD — o 55 do Brasil entra sozinho.</p>
+      <div class="adm-lista" id="admListaArtesaos"></div>
+    </div>
+  </section>
+
+  <!-- ---------- PEÇAS ---------- -->
+  <section class="adm-aba active" data-aba="pecas">
+    <div class="adm-card">
+      <h2>Peças</h2>
+      <p class="adm-ajuda">
+        Cada peça herda o número do artesão. Preencha o campo de número só quando
+        aquela peça precisar de uma exceção. Peças com mais de um artesão creditado
+        deixam você escolher quem atende.
+      </p>
+      <input type="search" class="adm-filtro" id="admFiltro" placeholder="Filtrar por nome da peça ou artesão…">
+      <div class="adm-lista" id="admListaPecas"></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="adm-aviso" id="admAviso" hidden></div>
+
+<script src="catalogo.js"></script>
+<script>
+(function(){
+
+  var API = API_AJUSTES;                 /* definido em catalogo.js */
+  var CHAVE_TOKEN = 'essencia.admin.token';
+
+  var token = null;
+  var ajustes = { artesaos: {}, pecas: {} };
+
+  var elLogin   = document.getElementById('admLogin');
+  var elPainel  = document.getElementById('admPainel');
+  var elQuem    = document.getElementById('admQuem');
+  var btSair    = document.getElementById('admSair');
+  var elAviso   = document.getElementById('admAviso');
+  var elFiltro  = document.getElementById('admFiltro');
+
+  function esc(s){
+    return String(s == null ? '' : s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  var timerAviso;
+  function avisar(msg, erro){
+    elAviso.textContent = msg;
+    elAviso.className = 'adm-aviso' + (erro ? ' erro' : '');
+    elAviso.hidden = false;
+    clearTimeout(timerAviso);
+    timerAviso = setTimeout(function(){ elAviso.hidden = true; }, erro ? 6000 : 2600);
+  }
+
+  /* Mostra 5586999998888 como (86) 99999-8888 para leitura. */
+  function formatar(numero){
+    if(!numero) return '';
+    var d = String(numero).replace(/\D/g,'');
+    if(d.indexOf('55') === 0) d = d.slice(2);
+    if(d.length === 11) return '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7);
+    if(d.length === 10) return '(' + d.slice(0,2) + ') ' + d.slice(2,6) + '-' + d.slice(6);
+    return numero;
+  }
+
+  /* ---------------- API ---------------- */
+
+  function chamar(caminho, opcoes){
+    opcoes = opcoes || {};
+    opcoes.headers = Object.assign(
+      { 'Content-Type': 'application/json' },
+      token ? { Authorization: 'Bearer ' + token } : {},
+      opcoes.headers || {}
+    );
+    return fetch(API + caminho, opcoes).then(function(r){
+      if(r.status === 401 || r.status === 403){
+        sair();
+        throw new Error('Sessão expirada. Entre novamente.');
+      }
+      return r.json().then(function(corpo){
+        if(!r.ok) throw new Error(corpo.error || 'Erro ao salvar.');
+        return corpo;
+      });
+    });
+  }
+
+  function carregar(){
+    return fetch(API, { cache:'no-store' })
+      .then(function(r){
+        if(!r.ok) throw new Error('A API respondeu ' + r.status);
+        return r.json();
+      })
+      .then(function(d){ ajustes = d; });
+  }
+
+  /* ---------------- Login ---------------- */
+
+  function entrar(email, senha){
+    var base = API.replace(/\/ajustes$/, '');
+    return fetch(base + '/auth/login', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ email: email, password: senha })
+    }).then(function(r){
+      return r.json().then(function(corpo){
+        if(!r.ok) throw new Error(corpo.error || 'Não foi possível entrar.');
+        if(corpo.user.role !== 'ADMIN') throw new Error('Este usuário não é administrador.');
+        return corpo;
+      });
+    });
+  }
+
+  function sair(){
+    token = null;
+    try { localStorage.removeItem(CHAVE_TOKEN); } catch(e){}
+    elPainel.hidden = true;
+    elLogin.hidden = false;
+    btSair.hidden = true;
+    elQuem.textContent = '';
+  }
+
+  function abrirPainel(nome){
+    elLogin.hidden = true;
+    elPainel.hidden = false;
+    btSair.hidden = false;
+    elQuem.textContent = nome || '';
+    document.getElementById('admQtdPecas').textContent = '(' + PRODUTOS.length + ')';
+    document.getElementById('admQtdArtesaos').textContent = '(' + ARTESAOS.length + ')';
+    renderArtesaos();
+    renderPecas();
+  }
+
+  document.getElementById('admFormLogin').addEventListener('submit', function(e){
+    e.preventDefault();
+    var erro = document.getElementById('admErroLogin');
+    var bt = document.getElementById('admEntrar');
+    erro.hidden = true;
+    bt.disabled = true; bt.textContent = 'Entrando…';
+
+    entrar(document.getElementById('admEmail').value.trim(),
+           document.getElementById('admSenha').value)
+      .then(function(r){
+        token = r.token;
+        try { localStorage.setItem(CHAVE_TOKEN, token); } catch(e){}
+        return carregar().then(function(){ abrirPainel(r.user.name); });
+      })
+      .catch(function(err){
+        erro.textContent = err.message;
+        erro.hidden = false;
+      })
+      .finally(function(){
+        bt.disabled = false; bt.textContent = 'Entrar';
+      });
+  });
+
+  btSair.addEventListener('click', sair);
+
+  /* ---------------- Artesãos ---------------- */
+
+  function renderArtesaos(){
+    var alvo = document.getElementById('admListaArtesaos');
+    alvo.innerHTML = ARTESAOS.map(function(a){
+      var atual = (ajustes.artesaos[a.id] || {}).whatsapp || '';
+      var qtd = produtosDoArtesao(a.id).length;
+      return '<div class="adm-item" data-artesao="' + a.id + '">' +
+               '<div class="adm-item-info">' +
+                 '<strong>' + esc(a.nome) + '</strong>' +
+                 '<span class="adm-meta">' + esc(a.oficio) + ' · ' + qtd + (qtd === 1 ? ' peça' : ' peças') + '</span>' +
+               '</div>' +
+               '<div class="adm-item-campos">' +
+                 '<input type="tel" class="adm-tel" value="' + esc(formatar(atual)) + '" placeholder="(86) 99999-9999" aria-label="WhatsApp de ' + esc(a.nome) + '">' +
+                 '<button type="button" class="adm-btn-mini">Salvar</button>' +
+               '</div>' +
+             '</div>';
+    }).join('');
+  }
+
+  document.getElementById('admListaArtesaos').addEventListener('click', function(e){
+    var bt = e.target.closest('.adm-btn-mini');
+    if(!bt) return;
+    var item = bt.closest('[data-artesao]');
+    var id = item.getAttribute('data-artesao');
+    var campo = item.querySelector('.adm-tel');
+
+    bt.disabled = true; bt.textContent = '…';
+    chamar('/artesaos/' + encodeURIComponent(id), {
+      method:'PATCH',
+      body: JSON.stringify({ whatsapp: campo.value })
+    })
+    .then(function(r){
+      ajustes.artesaos[id] = { nome: r.nome, whatsapp: r.whatsapp };
+      campo.value = formatar(r.whatsapp);
+      avisar('Número de ' + r.nome + ' salvo.');
+      renderPecas();          /* as peças dele mostram o número herdado novo */
+    })
+    .catch(function(err){ avisar(err.message, true); })
+    .finally(function(){ bt.disabled = false; bt.textContent = 'Salvar'; });
+  });
+
+  /* ---------------- Peças ---------------- */
+
+  function herdado(p){
+    var aj = ajustes.pecas[p.id] || {};
+    var ordem = [];
+    if(aj.artesaoContato) ordem.push(aj.artesaoContato);
+    p.artesaos.forEach(function(id){ if(ordem.indexOf(id) === -1) ordem.push(id); });
+    for(var i = 0; i < ordem.length; i++){
+      var w = (ajustes.artesaos[ordem[i]] || {}).whatsapp;
+      if(w) return { numero: w, de: ordem[i] };
+    }
+    return null;
+  }
+
+  function renderPecas(){
+    var alvo = document.getElementById('admListaPecas');
+    var termo = (elFiltro.value || '').trim().toLowerCase();
+
+    var lista = PRODUTOS.filter(function(p){
+      if(!termo) return true;
+      var aj = ajustes.pecas[p.id] || {};
+      var texto = ((aj.nome || p.nome) + ' ' + p.artesaosNomes.join(' ') + ' ' + p.tipo + ' ' + p.cor).toLowerCase();
+      return texto.indexOf(termo) !== -1;
+    });
+
+    if(!lista.length){
+      alvo.innerHTML = '<p class="adm-vazio">Nenhuma peça encontrada.</p>';
+      return;
+    }
+
+    alvo.innerHTML = lista.map(function(p){
+      var aj = ajustes.pecas[p.id] || {};
+      var nome = aj.nome || p.nome;
+      var excecao = aj.whatsapp || '';
+      var h = herdado(p);
+
+      var origem = excecao
+        ? '<span class="adm-tag excecao">exceção nesta peça</span>'
+        : (h ? '<span class="adm-tag">herda de ' + esc((ajustes.artesaos[h.de]||{}).nome || h.de) + ': ' + esc(formatar(h.numero)) + '</span>'
+             : '<span class="adm-tag alerta">sem número — vai para o número padrão da marca</span>');
+
+      var seletor = '';
+      if(p.artesaos.length > 1){
+        seletor = '<label class="adm-sub">Quem atende' +
+          '<select class="adm-contato">' +
+            p.artesaos.map(function(id){
+              var n = (ajustes.artesaos[id] || {}).nome || id;
+              var sel = (aj.artesaoContato || p.artesaos[0]) === id ? ' selected' : '';
+              return '<option value="' + esc(id) + '"' + sel + '>' + esc(n) + '</option>';
+            }).join('') +
+          '</select></label>';
+      }
+
+      return '<div class="adm-item peca" data-peca="' + esc(p.id) + '">' +
+               '<img class="adm-thumb" src="' + fotoCard(p.capa) + '" alt="" loading="lazy">' +
+               '<div class="adm-item-info">' +
+                 '<label class="adm-sub">Nome da peça' +
+                   '<input type="text" class="adm-nome" value="' + esc(nome) + '" maxlength="120">' +
+                 '</label>' +
+                 '<span class="adm-meta">' + esc(p.tipo + ' · ' + p.cor + ' · ' + p.tecnica) + ' — ' + esc(p.artesaosNomes.join(' & ')) + '</span>' +
+                 origem +
+               '</div>' +
+               '<div class="adm-item-campos">' +
+                 seletor +
+                 '<label class="adm-sub">Número só desta peça' +
+                   '<input type="tel" class="adm-tel" value="' + esc(formatar(excecao)) + '" placeholder="deixe vazio para herdar">' +
+                 '</label>' +
+                 '<button type="button" class="adm-btn-mini">Salvar</button>' +
+               '</div>' +
+             '</div>';
+    }).join('');
+  }
+
+  document.getElementById('admListaPecas').addEventListener('click', function(e){
+    var bt = e.target.closest('.adm-btn-mini');
+    if(!bt) return;
+    var item = bt.closest('[data-peca]');
+    var id = item.getAttribute('data-peca');
+    var elNome = item.querySelector('.adm-nome');
+    var elTel = item.querySelector('.adm-tel');
+    var elContato = item.querySelector('.adm-contato');
+
+    var corpo = { nome: elNome.value, whatsapp: elTel.value.trim() };
+    if(elContato) corpo.artesaoContato = elContato.value;
+
+    bt.disabled = true; bt.textContent = '…';
+    chamar('/pecas/' + encodeURIComponent(id), {
+      method:'PATCH',
+      body: JSON.stringify(corpo)
+    })
+    .then(function(r){
+      var antes = ajustes.pecas[id] || {};
+      ajustes.pecas[id] = {
+        nome: r.nome, whatsapp: r.whatsapp,
+        artesaoContato: r.artesaoContato, artesaos: antes.artesaos || []
+      };
+      avisar('“' + r.nome + '” salva.');
+      renderPecas();
+    })
+    .catch(function(err){ avisar(err.message, true); })
+    .finally(function(){ bt.disabled = false; bt.textContent = 'Salvar'; });
+  });
+
+  elFiltro.addEventListener('input', renderPecas);
+
+  /* ---------------- Abas ---------------- */
+
+  document.querySelectorAll('.adm-abas button').forEach(function(bt){
+    bt.addEventListener('click', function(){
+      var aba = bt.getAttribute('data-aba');
+      document.querySelectorAll('.adm-abas button').forEach(function(b){ b.classList.remove('active'); });
+      bt.classList.add('active');
+      document.querySelectorAll('.adm-aba').forEach(function(s){
+        s.hidden = s.getAttribute('data-aba') !== aba;
+      });
+    });
+  });
+
+  /* ---------------- Início: tenta reaproveitar a sessão ---------------- */
+
+  try { token = localStorage.getItem(CHAVE_TOKEN); } catch(e){}
+  if(token){
+    /* valida o token com uma escrita inofensiva não é necessário: se estiver
+       inválido, o primeiro Salvar devolve 401 e cai no login. */
+    carregar()
+      .then(function(){ abrirPainel(''); })
+      .catch(function(err){
+        sair();
+        document.getElementById('admErroLogin').textContent =
+          'Não foi possível falar com a API (' + err.message + '). O servidor está rodando? (cd backend && npx tsx src/server.ts)';
+        document.getElementById('admErroLogin').hidden = false;
+      });
+  }
+
+})();
+</script>
+</body>
+</html>

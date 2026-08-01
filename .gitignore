@@ -6,3 +6,11 @@ backend/prisma/*.db-journal
 .env
 *.log
 .DS_Store
+
+# Fotos originais de estúdio: ~1 GB em Art/<Artesao>/.
+# O site nunca serve esses arquivos — usa as reduções em /web, geradas por
+# otimizar_imagens.py. Os retratos em Art/*.jpg seguem versionados.
+Art/*/
+
+# Rascunhos e exports soltos
+image.png

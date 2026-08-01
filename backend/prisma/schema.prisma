@@ -1,5 +1,10 @@
+// Datasource: SQLite, que é o que já existe de fato em prisma/dev.db
+// (o arquivo já tinha as tabelas User e Product criadas via `prisma db push`,
+// embora o schema estivesse apontando para postgresql sem Postgres no ar).
+// Para migrar para Postgres depois: troque provider = "postgresql", ajuste o
+// DATABASE_URL no .env e rode `npx prisma db push` de novo.
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -27,10 +32,51 @@ model Product {
   category    String
   imageUrl    String?
   status      String   @default("PUBLISHED") // "PUBLISHED" or "DRAFT"
-  
+
   artisanId   String
   artisan     User     @relation(fields: [artisanId], references: [id])
 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// AJUSTES DO CATÁLOGO
+//
+// O catálogo em si (tipo, cor, técnica, fotos, galeria) continua em
+// catalogo.js — é ele que casa com os arquivos de /Art e não muda pelo admin.
+// Aqui ficam SÓ os campos que o admin edita, indexados pelo mesmo id/slug do
+// catálogo. O site funciona com ou sem a API no ar: se a API não responder,
+// vale o que está em catalogo.js.
+// ---------------------------------------------------------------------------
+
+model Artesao {
+  id       String  @id // mesmo slug do catálogo: "kivia", "maryland"...
+  nome     String
+  whatsapp String? // número padrão de quem atende as peças dele
+
+  pecas Peca[] @relation("PecaArtesaos")
+
+  atualizadoEm DateTime @updatedAt
+}
+
+model Peca {
+  id   String @id // mesmo slug do catálogo: "vestido-macrame-marrom"
+  nome String
+
+  // Só fica true quando alguém troca o nome pelo admin. Enquanto for false, o
+  // nome que vale é o do catalogo.js — assim uma correção feita no arquivo
+  // chega ao site, em vez de ficar presa atrás da cópia do banco.
+  nomeEditado Boolean @default(false)
+
+  // Exceção: se preenchido, ignora o número do artesão nesta peça.
+  whatsapp String?
+
+  // Quando a peça tem mais de um artesão creditado (quem costurou e quem
+  // bordou), define qual deles atende o pedido. Guarda o id do artesão.
+  artesaoContato String?
+
+  artesaos Artesao[] @relation("PecaArtesaos")
+
+  atualizadoEm DateTime @updatedAt
 }

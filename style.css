@@ -388,10 +388,10 @@
     .coll {
       position: relative;
       width: 100%;
-      height: auto !important;
+      height: auto;
       aspect-ratio: 1 / 2;
-      padding: 0 0 28px !important;
-      background: url('img/coll-serra-mobile.webp') center/cover no-repeat !important;
+      padding: 0 0 28px;
+      background: url('img/coll-serra-mobile.webp') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -559,20 +559,21 @@
   }
   .cats-todas:hover{color:var(--terracota);gap:12px}
 
-  /* ===== COLEÇÕES full-bleed ===== */
-  .coll{position:relative;height:min(94vh,820px);min-height:520px;overflow:hidden;display:flex;align-items:center;background: #F8EFE0 url('img/coll-serra-rupestre-desktop.webp') center/cover no-repeat !important;}
-  .coll-bg{display:none}
-  .coll-media-mobile{display:none}   /* só no mobile */
-  .coll::before{display:none}
-  .coll-media-mobile{display:none}
-  .coll-inner{position:relative;z-index:2;color:#3D2213;padding:0 clamp(20px,3.5vw,50px);max-width:560px}
-  .coll-num{font-family:var(--font-body);font-size:13px;letter-spacing:.3em;color:#6B361A;font-weight:700}
-  .coll-inner h2{font-family:'Times New Roman', Times, serif;font-style:italic;font-weight:700;font-size:clamp(44px,7.5vw,100px);margin:14px 0 18px;line-height:.94;color:#3D2213}
-  .coll-inner p{max-width:480px;color:#4A2B15;font-weight:600;font-size:clamp(15px,1.5vw,18px);margin-bottom:30px}
-  .coll-link{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#3D2213;position:relative}
-  .coll-link .ar{width:34px;height:1px;background:#3D2213;position:relative;transition:width .4s var(--ease)}
-  .coll-link:hover .ar{width:54px}
-  .coll-link .ar::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid #3D2213;border-right:1px solid #3D2213;transform:rotate(45deg)}
+  /* ===== COLEÇÕES full-bleed (Desktop) ===== */
+  @media (min-width: 769px) {
+    .coll{position:relative;height:min(94vh,820px);min-height:520px;overflow:hidden;display:flex;align-items:center;background: #F8EFE0 url('img/coll-serra-rupestre-desktop.webp') center/cover no-repeat;}
+    .coll-bg{display:none}
+    .coll-media-mobile{display:none}
+    .coll::before{display:none}
+    .coll-inner{position:relative;z-index:2;color:#3D2213;padding:0 clamp(20px,3.5vw,50px);max-width:560px}
+    .coll-num{font-family:var(--font-body);font-size:13px;letter-spacing:.3em;color:#6B361A;font-weight:700}
+    .coll-inner h2{font-family:'Times New Roman', Times, serif;font-style:italic;font-weight:700;font-size:clamp(44px,7.5vw,100px);margin:14px 0 18px;line-height:.94;color:#3D2213}
+    .coll-inner p{max-width:480px;color:#4A2B15;font-weight:600;font-size:clamp(15px,1.5vw,18px);margin-bottom:30px}
+    .coll-link{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#3D2213;position:relative}
+    .coll-link .ar{width:34px;height:1px;background:#3D2213;position:relative;transition:width .4s var(--ease)}
+    .coll-link:hover .ar{width:54px}
+    .coll-link .ar::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid #3D2213;border-right:1px solid #3D2213;transform:rotate(45deg)}
+  }
 
   /* ===== FEITO À MÃO (sticky) ===== */
   .handmade{background:var(--creme-2)}

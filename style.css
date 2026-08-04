@@ -383,8 +383,10 @@
     .hero-inner{grid-template-columns:1fr;gap:0}
     .hero-col-right{display:none}
     .hero-bg{
-      background-image: url('img/hero-mobile.jpg') !important;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.22)), url('img/hero-mobile.jpg') !important;
       background-position: center top !important;
+      background-size: cover !important;
+      filter: brightness(0.88) !important;
     }
   }
   @media (max-width: 768px){

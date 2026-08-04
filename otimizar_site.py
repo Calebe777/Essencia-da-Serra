@@ -40,6 +40,10 @@ TRABALHOS = [
     # parágrafo), por isso o texto em HTML fica oculto nesse breakpoint.
     ("Background-Serra 2 - Expandido 1920x820 02020.png",
      "img/coll-serra-rupestre-mobile.jpg", 900, "foto"),
+
+    # Hero Mobile
+    ("export (2).png",
+     "img/hero-mobile.jpg", 1080, "foto"),
 ]
 
 QUALIDADE_JPEG = 84

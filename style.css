@@ -382,6 +382,10 @@
   @media (max-width: 900px){
     .hero-inner{grid-template-columns:1fr;gap:0}
     .hero-col-right{display:none}
+    .hero-bg{
+      background-image: url('img/hero-mobile.jpg') !important;
+      background-position: center top !important;
+    }
   }
   @media (max-width: 768px){
     .manifesto .wrap{padding:0 20px}
@@ -813,7 +817,7 @@
   }
   @media (max-width: 768px) {
     .founder {
-      background: #F8EFE0 url('mobile.png') top center / 100% auto no-repeat !important;
+      background: #F8EFE0 url('img/hero-mobile.jpg') top center / 100% auto no-repeat !important;
       min-height: auto;
       padding-top: clamp(200px, 64vw, 340px) !important;
       padding-bottom: 48px !important;

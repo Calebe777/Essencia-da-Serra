@@ -819,10 +819,10 @@
   }
   @media (max-width: 768px) {
     .founder {
-      background: #F8EFE0 url('img/hero-mobile.jpg') top center / 100% auto no-repeat !important;
+      background: url('img/hero-mobile.jpg') center / cover no-repeat !important;
       min-height: auto;
-      padding-top: clamp(200px, 64vw, 340px) !important;
-      padding-bottom: 48px !important;
+      padding-top: clamp(40px, 10vw, 80px) !important;
+      padding-bottom: clamp(40px, 10vw, 80px) !important;
     }
     .founder .wrap {
       justify-content: center;
